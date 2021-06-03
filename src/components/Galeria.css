@@ -1,0 +1,89 @@
+.contenedor {
+    display: flex;   
+    
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 180px;   
+    max-width: 1500px; 
+}
+
+.cards {
+    width: 350px;
+    height: 470px;
+    border: 1px solid black;
+    /* text-align: center; */
+    box-shadow: 0 15px 8px 0 rgb(0 0 0 / 20%), 0 15px 20px 0 rgb(0 0 0 / 19%);
+    border-radius: 8px;
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
+    overflow: hidden;
+    color: rgb(230, 222, 222);
+    text-shadow: 2px 2px 5px black;
+    
+}
+.name {    
+    padding-left: 20px;
+ 
+
+}
+.cardImage {
+    
+    width: 350px;
+    height: 470px;
+    position: absolute;
+    z-index: -1;
+    /* display: table-cell; */
+    vertical-align: middle;
+    text-align: center;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    overflow: hidden;
+}
+
+ 
+  
+  .cardImage img {
+    width: auto;
+  }
+  .starCard {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: flex-end;
+    padding: 0 20px;
+    width: 310px;
+    height: 40px;
+    margin-top: 20px;
+    
+  }
+  .starCard img {
+    width: 30px;
+    height: 30px;
+  }
+
+
+
+
+
+
+@media (max-width: 700px){
+    .contenedor {
+        margin-top: 100px;
+    }
+
+}
+@media (max-width: 500px){
+    .cards {
+        width: 300px;
+        height: 420px;
+    }
+    .cardImage {
+    
+        width: 300px;
+        height: 420px;
+        
+    }
+}
