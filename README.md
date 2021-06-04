@@ -27,12 +27,25 @@
 </li>
 </ul>
 <br>
-<h1>* Primer Commit en MASTER</h1>
+## Primer Commit y Push en MASTER
 <ul>
   <li>Plantilla inicial de la barra de navegación y el catálogo de personajes </li>
   <li>Preparación del formato de las tarjetas de presentación de los personajes (Cards)</li>
   <li>Adecuación para que la página sea Responsive</li>
   <li>Creación de los componentes requeridos para mostrar la página inicial antes de invocar al buscador</li>
+  <li>Push a Master</li>
   <li>Se pasa el proyecto a una rama "Feature-galeria" para trabajar lo referente a la api y carga inicial de los personajes</li>
 
  </ul>
+## Feature Galeria Random
+<ul>
+  <li>Creación de una rama "Feature-galeria-random" para trabajar lo referente a la api y carga inicial de los personajes</li>
+  <li>Se incluye todo lo referente a la carga inicial de la página, mostrando ocho personajes de forma aleatoria y diferentes cada vez que se carga la página</li>
+</ul>
+ ## Elaborado por:
+ Ing. Julio Añez
+
+ ### Como instalar: 🔧
+- git clone https://github.com/janez0266/marvel-comics.git
+- npm install 
+- npm start 

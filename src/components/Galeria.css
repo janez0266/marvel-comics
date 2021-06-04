@@ -24,6 +24,10 @@
     text-shadow: 2px 2px 5px black;
     
 }
+.cards:hover {
+    border: 1px solid #ec0707;
+    box-shadow: 0 15px 8px 0 rgb(154 8 8 / 20%), 0 15px 20px 0 rgb(181 181 52 / 19%);
+}
 .name {    
     padding-left: 20px;
  

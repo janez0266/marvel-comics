@@ -1,91 +1,38 @@
-import React from 'react'
+import React, {useEffect, useState } from 'react'
 import "./Galeria.css"
-import star from "../images/star_favorite_white.png";
-import character from "../images/black-widow.jpg";
+import MarvelAPI from '../APIS/MarvelAPI';
+import Cards from "./Cards"
+
+  
 
 const Galeria = () => {
+    const [posts, setPosts] = useState([]); 
+    // const [cargando, setCargando] = useState(false)
+
+    // handleOnChange = (e) => this.setState({
+    //     [e.target.name]: e.target.value
+    // })
+
+    useEffect(() => {
+        const api = new MarvelAPI();
+        api.getMarvelList()
+            .then(json => {
+                const res = json;
+                const cards = res.data.results;
+                setPosts(...posts, cards);                
+
+            })
+            .catch(err => console.log(err))
+    }, []);
+ 
+    const urlGetKey = new MarvelAPI();
+    const key = urlGetKey.urlString();
     return (
-        <div className="contenedor">
-
-            <div className="cards">
-                <div className="cardImage">                    
-                    <img src={character}></img>
-                </div>
-                <div className="starCard">
-                    <img src={star}></img>
-                </div>
-                <div className="name"><h2>IRON-MAN</h2></div>
-            </div>
-            <div className="cards">
-                <div className="cardImage">                    
-                    <img src={character}></img>
-                </div>
-                <div className="starCard">
-                    <img src={star}></img>
-                </div>
-                <div className="name"><h2>IRON-MAN</h2></div>
-            </div>
-            <div className="cards">
-                <div className="cardImage">                    
-                    <img src={character}></img>
-                </div>
-                <div className="starCard">
-                    <img src={star}></img>
-                </div>
-                <div className="name"><h2>IRON-MAN</h2></div>
-            </div>
-            <div className="cards">
-                <div className="cardImage">                    
-                    <img src={character}></img>
-                </div>
-                <div className="starCard">
-                    <img src={star}></img>
-                </div>
-                <div className="name"><h2>IRON-MAN</h2></div>
-            </div>
-            <div className="cards">
-                <div className="cardImage">                    
-                    <img src={character}></img>
-                </div>
-                <div className="starCard">
-                    <img src={star}></img>
-                </div>
-                <div className="name"><h2>IRON-MAN</h2></div>
-            </div>
-            <div className="cards">
-                <div className="cardImage">                    
-                    <img src={character}></img>
-                </div>
-                <div className="starCard">
-                    <img src={star}></img>
-                </div>
-                <div className="name"><h2>IRON-MAN</h2></div>
-            </div>
-            <div className="cards">
-                <div className="cardImage">                    
-                    <img src={character}></img>
-                </div>
-                <div className="starCard">
-                    <img src={star}></img>
-                </div>
-                <div className="name"><h2>IRON-MAN</h2></div>
-            </div>
-            <div className="cards">
-                <div className="cardImage">                    
-                    <img src={character}></img>
-                </div>
-                <div className="starCard">
-                    <img src={star}></img>
-                </div>
-                <div className="name"><h2>IRON-MAN</h2></div>
-            </div>
-
-
-          
-
-        </div>
-
+        <div className="contenedor" >
+            <Cards cardItems={posts} urlKey={key} />
+        </div >
     )
+
 }
 
-export default Galeria
+export default Galeria;

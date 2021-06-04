@@ -3,11 +3,6 @@ import "./App.css"
 import Nav from "./components/Nav";
 import Galeria from "./components/Galeria"
 
-// import styled from 'styled-component';
-// const StyledApp = styled.div`
-//   font-family: sans-serif;
-//   text-align: center;
-//   `;
 
 const App = () => {
   return (
@@ -16,10 +11,9 @@ const App = () => {
         <Nav />
       </header>
       <div className="main">
-
-					<Galeria />
-
-				</div>
+        <Galeria />
+      </div>
+     
     </div>
   );
 }

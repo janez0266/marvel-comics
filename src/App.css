@@ -7,3 +7,16 @@
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
 }
+.mensaje {
+  width: 300px;
+  height: 100px;
+  top: 426px;
+  left: 40%;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 20px;
+  display: none;
+  position: fixed;
+  background: white;
+  text-align: center;
+}
