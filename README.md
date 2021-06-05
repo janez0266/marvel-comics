@@ -41,6 +41,8 @@
 <ul>
   <li>Creación de una rama "Feature-galeria-random" para trabajar lo referente a la api y carga inicial de los personajes</li>
   <li>Se incluye todo lo referente a la carga inicial de la página, mostrando ocho personajes de forma aleatoria y diferentes cada vez que se carga la página</li>
+  <li>Se habilita una ventana que informa que esperea que cargue la página</li>
+  <li>Se activa la ventana MODAL al hacer click a la Card</li>
 </ul>
  ## Elaborado por:
  Ing. Julio Añez

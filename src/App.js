@@ -12,8 +12,7 @@ const App = () => {
       </header>
       <div className="main">
         <Galeria />
-      </div>
-     
+      </div>      
     </div>
   );
 }
