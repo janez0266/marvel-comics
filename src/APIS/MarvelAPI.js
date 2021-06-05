@@ -1,10 +1,10 @@
 import md5 from "react-native-md5";
 
 
+
 class MarvelAPI {    
-    
-    API_KEY_PUBLIC = '8e54e231196cb959c59017ddd0381c12';
-    API_KEY_PRIVATE = '3ee4f9617a4f82f52a6631829210ad567a28ec72';
+    API_KEY_PUBLIC = process.env.REACT_APP_API_PUBLIC_KEY;
+    API_KEY_PRIVATE =process.env.REACT_APP_API_PRIVATE_KEY;
     API_TIMESTAMP = new Date().toISOString();
     API_HASH = md5.hex_md5(this.API_TIMESTAMP + this.API_KEY_PRIVATE + this.API_KEY_PUBLIC);
     LIMIT = 8;

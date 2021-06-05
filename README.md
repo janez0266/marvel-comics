@@ -43,6 +43,7 @@
   <li>Se incluye todo lo referente a la carga inicial de la página, mostrando ocho personajes de forma aleatoria y diferentes cada vez que se carga la página</li>
   <li>Se habilita una ventana que informa que esperea que cargue la página</li>
   <li>Se activa la ventana MODAL al hacer click a la Card</li>
+  <li>Se aseguran las claves (Key) publicas y privadas en .env</li>
 </ul>
  ## Elaborado por:
  Ing. Julio Añez
