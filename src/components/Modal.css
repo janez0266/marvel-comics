@@ -1,22 +1,26 @@
+.modal{
+  background-color: rgba(0,0,0,.8);
+  position: fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  opacity:0;
+  pointer-events:none;
+  transition: all 0.3s;
+  z-index: 20;
+
+}
+
 .modal-contenido{
-    background-color:rgb(198, 241, 241);
-    width:300px;
-    padding: 10px 20px;
-    margin: 20% auto;
-    position: relative;
-    box-shadow: 0 15px 8px 0 rgba(0, 0, 0, 0.2), 0 15px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 15px;
-  }
-  .modal{
-    background-color: rgba(0,0,0,.8);
-    position:fixed;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
-    opacity:0;
-    pointer-events:none;
-    transition: all 1s;
+  background-color: rgb(223 241 241);
+  width: 45%;
+  height: 600px;
+  padding: 10px 20px;
+  margin: 14% auto;
+  position: relative;
+  box-shadow: 0 15px 8px 0 rgb(0 0 0 / 20%), 0 15px 20px 0 rgb(0 0 0 / 19%);
+  border-radius: 15px;
   }
   #miModal:target{
     opacity:1;

@@ -23,4 +23,9 @@ yarn-debug.log*
 yarn-error.log*
 
 #Key
+# api keys
+.env      
+
+#Docs
 /src/docs/Links.txt
+/src/docs/examples.js
