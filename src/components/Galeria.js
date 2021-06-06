@@ -4,12 +4,9 @@ import MarvelAPI from "../APIS/MarvelAPI";
 import Cards from "./Cards";
 import WaitLoading from "./WaitLoading";
 import "./WaitLoading.css";
-// import styled from "styled-components"
 import Modal from "./Modal";
 
-// const Prueba = styled.h1`
-//     color: blue;
-// `
+
 const Galeria = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,10 +18,9 @@ const Galeria = () => {
   };
 
   const handleCloseModal = () => {
-    console.log(isModalOpen);
-    console.log("click");
     setIsModalOpen(false);
   };
+
   useEffect(() => {
     const api = new MarvelAPI();
     api
@@ -34,9 +30,12 @@ const Galeria = () => {
         const cards = res.data.results;
         setPosts(cards);
         setLoading(false);
-               
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        window.alert("Error al descargar el contenido.. Intente mas tarde...");
+      });
   }, []);
 
   const urlGetKey = new MarvelAPI();

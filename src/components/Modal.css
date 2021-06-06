@@ -13,16 +13,74 @@
 }
 
 .modal-contenido{
-  background-color: rgb(223 241 241);
+  background-color: white;
   width: 45%;
+  max-width: 700px;
   height: 600px;
-  padding: 10px 20px;
+  padding: 0 20px;
   margin: 14% auto;
   position: relative;
   box-shadow: 0 15px 8px 0 rgb(0 0 0 / 20%), 0 15px 20px 0 rgb(0 0 0 / 19%);
   border-radius: 15px;
+  overflow: auto;
+  
+  }
+  .modal-encabezado {
+    position: fixed;
+    height: 75px;
+    max-width: 700px;
+    width: 44%;
+    background-color: white;
+  }
+  .modal-list {
+    margin-top: 80px;
   }
   #miModal:target{
     opacity:1;
     pointer-events:auto;
+  }
+.modal-contenido a {
+  display: flex;
+  justify-content: flex-end;
+  
+  
+}
+.modal-contenido a h1 {
+  cursor: pointer;
+}
+
+  .modalItem {
+    width: 96%;
+    height: 115px;
+ 
+    margin: 24px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 4px 3px 15px 0 rgb(0 0 0 / 20%), 0 15px 20px 0 rgb(0 0 0 / 19%);
+  }
+  .imgComic {
+    width: 100px;
+    height: 100%;
+    
+    
+    /* display: table-cell; */
+    vertical-align: middle;
+    text-align: center;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    overflow: hidden;
+    
+  }
+  .imgComic img {
+    width: auto;
+  }
+  .infoComic {
+    width: 75%;
+    margin: 10px;
+    font-size: 10px;
+  }
+  .infoComic h2 {
+    margin-bottom: 5px;
   }
