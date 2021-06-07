@@ -1,28 +1,117 @@
-.modal{
-  background-color: rgba(0,0,0,.8);
+.modal {
+  background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
-  top:0;
-  right:0;
-  bottom:0;
-  left:0;
-  opacity:0;
-  pointer-events:none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
   transition: all 0.3s;
   z-index: 20;
-
 }
 
-.modal-contenido{
-  background-color: rgb(223 241 241);
+.modal-contenido {
+  background-color: white;
   width: 45%;
+  max-width: 700px;
   height: 600px;
-  padding: 10px 20px;
+  padding: 0 20px;
   margin: 14% auto;
   position: relative;
   box-shadow: 0 15px 8px 0 rgb(0 0 0 / 20%), 0 15px 20px 0 rgb(0 0 0 / 19%);
   border-radius: 15px;
-  }
-  #miModal:target{
-    opacity:1;
-    pointer-events:auto;
-  }
+  overflow: auto;
+}
+.modal-encabezado {
+  position: fixed;
+  height: 75px;
+  max-width: 700px;
+  width: 44%;
+  background-color: white;
+}
+.modal-encabezado a h1 {
+  margin-right: 10px;
+}
+.modal-list {
+  margin-top: 80px;
+}
+#miModal:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-contenido a {
+  display: flex;
+  justify-content: flex-end;
+}
+.modal-contenido a h1 {
+  cursor: pointer;
+}
+
+.modalItem {
+  width: 96%;
+  height: 115px;
+
+  margin: 24px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 4px 3px 15px 0 rgb(0 0 0 / 20%), 0 15px 20px 0 rgb(0 0 0 / 19%);
+}
+.imgComic {
+  width: 100px;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+  justify-content: end;
+  overflow: hidden;
+}
+.imgComic img {
+  width: auto;
+}
+.infoComic {
+  width: 75%;
+  margin: 10px 0px 10px 10px;
+  font-size: 10px;
+  overflow: auto;
+}
+.infoComic h2 {
+  margin-bottom: 5px;
+}
+
+.modal-contenido::-webkit-scrollbar,
+.infoComic::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Estilos barra (thumb) de scroll */
+.modal-contenido::-webkit-scrollbar-thumb,
+.infoComic::-webkit-scrollbar-thumb {
+  background: #5c656f;
+  border-radius: 4px;
+}
+
+.modal-contenido::-webkit-scrollbar-thumb:active,
+.infoComic::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+}
+
+.modal-contenido::-webkit-scrollbar-thumb:hover,
+.infoComic::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos track de scroll */
+.modal-contenido::-webkit-scrollbar-track,
+.infoComic::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  border-radius: 4px;
+}
+
+.modal-contenido::-webkit-scrollbar-track:hover,
+.modal-contenido::-webkit-scrollbar-track:active,
+.infoComic::-webkit-scrollbar-track:hover
+  .infoComic::-webkit-scrollbar-track:active {
+  background: #d4d4d4;
+}

@@ -51,4 +51,13 @@
  ### Como instalar: 🔧
 - git clone https://github.com/janez0266/marvel-comics.git
 - npm install 
+
+- Crear una variable de entorno para colocar las Keys
+  - Entrar a la página https://developer.marvel.com/ y crear una cuenta
+  - Solicitar las Keys
+  - Crear un archivo en la raiz llamado .env
+  - Editarlo y agregar las lineas:
+    - // .env
+      REACT_APP_API_PUBLIC_KEY="colocar la key publica sin comillas"
+      REACT_APP_API_PRIVATE_KEY="colocar la key privada sin comillas"
 - npm start 
