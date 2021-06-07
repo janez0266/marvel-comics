@@ -2,7 +2,13 @@ import React from "react";
 
 
 const ModalListComics = (props) => {
-  if (props.comicsItems.length === 0) return <h1> no hay datos</h1>;
+    console.log(props.comicsItems)
+  if (props.comicsItems.length === 0) {
+      return (
+        <div className="modal-list">
+            < h2>... Este personaje no tiene Comics ....</h2>
+        </div>
+        )}
   return (
     <>
       <div className="modal-list">
