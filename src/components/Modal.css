@@ -36,6 +36,11 @@
 .modal-list {
   margin-top: 80px;
 }
+.modal-list a {
+  text-decoration: none;
+  color: black;
+}
+
 #miModal:target {
   opacity: 1;
   pointer-events: auto;
@@ -51,13 +56,13 @@
 .modalItem {
   width: 96%;
   height: 115px;
-
   margin: 24px 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   box-shadow: 4px 3px 15px 0 rgb(0 0 0 / 20%), 0 15px 20px 0 rgb(0 0 0 / 19%);
 }
+
 .imgComic {
   width: 100px;
   height: 100%;

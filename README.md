@@ -45,6 +45,13 @@
   <li>Se activa la ventana MODAL al hacer click a la Card</li>
   <li>Se aseguran las claves (Key) publicas y privadas en .env</li>
 </ul>
+## Feature Redux
+<ul>
+  <li>Se implementó Redux para manejar las variables y arreglos globales </li>
+  <li>Se agregó funcionalidad al buscador por personaje</li>
+  <li>Se agregaron dos botones "Atras" y "Siguiente" al recibir la lista de personajes por busqueda y poder visualizar el resultado en grupos de 8 cards</li>
+  <li>Se agrego un link que dirige a la página del comics al hacer click a un elemento del listado de comics</li>
+  <li>Ajustes de estilo</li>
  ## Elaborado por:
  Ing. Julio Añez
 
