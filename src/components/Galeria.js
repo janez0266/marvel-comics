@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import {useDispatch} from "react-redux";
-import {getCharactersAccion} from "../APIS/MarvelAPI"
+//import {useDispatch} from "react-redux";
+//import {getCharactersAccion} from "../APIS/MarvelAPI"
 import "./Galeria.css";
 import MarvelKey from "../APIS/MarvelKey";
 import Cards from "./Cards";
@@ -9,9 +9,10 @@ import WaitLoading from "./WaitLoading";
 import Modal from "./Modal";
 import Buttons from "./Buttons";
 
+
 const Galeria = () => {
   // variables Redux
-  const dispatch = useDispatch();
+ // const dispatch = useDispatch();
   const personajes = useSelector((store) => store.personajes.array);
   const loading = useSelector((store) => store.personajes.waitState);
   const showButtons = useSelector((store) => store.personajes.showButtons);
@@ -28,8 +29,9 @@ const Galeria = () => {
   const urlGetKey = new MarvelKey();
   const key = urlGetKey.urlString();
 
+  
   useEffect(() => {
-    dispatch(getCharactersAccion())
+    //dispatch(getCharactersAccion())
   }, [])
 
   return (

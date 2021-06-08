@@ -5,14 +5,14 @@ import MarvelKey from "./MarvelKey"
 
 // constantes
 
-// const dataInicial = {
-//     array: [],
-//     offset: 0,
-//     length: 0,
-//     name: "",
-//     waitState: false,
-//     showButtons: false
-// }
+const dataInicial = {
+    array: [],
+    offset: 0,
+    length: 0,
+    name: "",
+    waitState: false,
+    showButtons: false
+}
 const urlGetKey = new MarvelKey();
 const URL_STRING_KEY =urlGetKey.urlString();
 const urlBaseCharacters = "https://gateway.marvel.com:443/v1/public/characters"
@@ -26,37 +26,37 @@ const SET_WAIT = "SET_WAIT";
 //const SHOW_BUTTONS = "SHOW_BUTTONS";
 
 //reducer
-// export default function marvelReducer(state = dataInicial, action){
-//     switch(action.type){
-//         case OBTENER_CHARACTERS_EXITO:
-//             return {...state, array: action.payload.array, 
-//                 waitState: action.payload.waitState, 
-//                 showButtons: action.payload.showButtons
-//             }
-//         case OBTENER_CHARACTER_POR_NOMBRE_EXITO:
-//             return {...state, array: action.payload.array, 
-//                 length: action.payload.length,
-//                 name: action.payload.name, 
-//                 waitState: action.payload.waitState,
-//                 showButtons: action.payload.showButtons
-//             }
-//         case SIGUIENTE_CHARACTERS_EXITO:
-//             return {...state, array: action.payload.array, 
-//                 offset: action.payload.offset,
-//                 waitState: action.payload.waitState}
-//         case ANTERIOR_CHARACTER_EXITO:
-//             return {...state, array: action.payload.array, 
-//                 offset: action.payload.offset,
-//                 waitState: action.payload.waitState
-//             }
-//         case SET_WAIT:
-//             return {...state, waitState: action.payload.waitState}
-//         default:
-//             return state
+export default function marvelReducer(state = dataInicial, action){
+    switch(action.type){
+        case OBTENER_CHARACTERS_EXITO:
+            return {...state, array: action.payload.array, 
+                waitState: action.payload.waitState, 
+                showButtons: action.payload.showButtons
+            }
+        case OBTENER_CHARACTER_POR_NOMBRE_EXITO:
+            return {...state, array: action.payload.array, 
+                length: action.payload.length,
+                name: action.payload.name, 
+                waitState: action.payload.waitState,
+                showButtons: action.payload.showButtons
+            }
+        case SIGUIENTE_CHARACTERS_EXITO:
+            return {...state, array: action.payload.array, 
+                offset: action.payload.offset,
+                waitState: action.payload.waitState}
+        case ANTERIOR_CHARACTER_EXITO:
+            return {...state, array: action.payload.array, 
+                offset: action.payload.offset,
+                waitState: action.payload.waitState
+            }
+        case SET_WAIT:
+            return {...state, waitState: action.payload.waitState}
+        default:
+            return state
 
-//     }
+    }
 
-// }
+}
 
 //acciones
 export const getCharactersAccion = () => async (dispatch) => {

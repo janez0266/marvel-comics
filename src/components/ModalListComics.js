@@ -14,8 +14,10 @@ const ModalListComics = (props) => {
       <div className="modal-list">
         {props.comicsItems &&
           props.comicsItems.map((item, id) => (
-            <div className="modalItem" key={id}>
-              <div className="imgComic">
+
+            <a href={item.urls[0].url} target="_blank" rel="noreferrer" key={id}>
+            <div className="modalItem" >
+              <div className="imgComic" >
                 <img
                   src={
                     item.thumbnail.path +
@@ -27,12 +29,13 @@ const ModalListComics = (props) => {
                 ></img>
               </div>
               <div className="infoComic">
-                <h2>
-                  {item.title} -- ID: {item.id}
-                </h2>
+                <h2>{item.title} -- ID: {item.id}</h2>
                 <p>{item.description} </p>
               </div>
             </div>
+            </a>
+
+
           ))}
       </div>
     </>
