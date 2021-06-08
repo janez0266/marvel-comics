@@ -1,56 +1,54 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import {useDispatch} from "react-redux";
+import {getCharactersAccion} from "../APIS/MarvelAPI"
 import "./Galeria.css";
-import MarvelAPI from "../APIS/MarvelAPI";
+import MarvelKey from "../APIS/MarvelKey";
 import Cards from "./Cards";
 import WaitLoading from "./WaitLoading";
-import "./WaitLoading.css";
 import Modal from "./Modal";
-
+import Buttons from "./Buttons";
 
 const Galeria = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // variables Redux
+  const dispatch = useDispatch();
+  const personajes = useSelector((store) => store.personajes.array);
+  const loading = useSelector((store) => store.personajes.waitState);
+  const showButtons = useSelector((store) => store.personajes.showButtons);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalInfo, setModalInfo] = useState({});
   const handleOpenModal = (item) => {
     setIsModalOpen(true);
     setModalInfo(item);
   };
-
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
-  useEffect(() => {
-    const api = new MarvelAPI();
-    api
-      .getMarvelList()
-      .then((json) => {
-        const res = json;
-        const cards = res.data.results;
-        setPosts(cards);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-        window.alert("Error al descargar el contenido.. Intente mas tarde...");
-      });
-  }, []);
-
-  const urlGetKey = new MarvelAPI();
+  const urlGetKey = new MarvelKey();
   const key = urlGetKey.urlString();
 
+  useEffect(() => {
+    dispatch(getCharactersAccion())
+  }, [])
+
   return (
-    <div className="contenedor">
-      <Cards cardItems={posts} urlKey={key} handleOpenModal={handleOpenModal} />
-      <WaitLoading estado={loading} />
-      <Modal
-        handleClick={handleCloseModal}
-        isModalOpen={isModalOpen}
-        modalInfo={modalInfo}
-      />
-    </div>
+    <>
+    <Buttons estado={showButtons} />
+      <div className="contenedor">
+        <Cards
+          cardItems={personajes}
+          urlKey={key}
+          handleOpenModal={handleOpenModal}
+        />
+        <WaitLoading estado={loading} />
+        <Modal
+          handleClick={handleCloseModal}
+          isModalOpen={isModalOpen}
+          modalInfo={modalInfo}
+        />
+      </div>
+    </>
   );
 };
 

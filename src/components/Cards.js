@@ -14,6 +14,12 @@ function mostrarImagen(imagenPath, imagenKey) {
 }
 
 const Cards = (props) => {
+  if (props.cardItems.length === 0) {
+    return (
+      <div className="modal-list">
+          <h1>... No hay datos que mostrar ....</h1>
+      </div>
+      )}
   return (
     <>
       {props.cardItems &&

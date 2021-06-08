@@ -2,7 +2,7 @@ import React from "react";
 
 
 const ModalListComics = (props) => {
-    console.log(props.comicsItems)
+    
   if (props.comicsItems.length === 0) {
       return (
         <div className="modal-list">

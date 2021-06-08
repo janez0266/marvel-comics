@@ -1,37 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./Modal.css";
-import MarvelAPI from "../APIS/MarvelAPI";
+import { useSelector } from "react-redux";
+import {useDispatch} from "react-redux";
+import {getComicsByIdAccion} from "../APIS/ComicsAPI"
+import MarvelKey from "../APIS/MarvelKey";
 import ModalListComics from "./ModalListComics";
 import WaitLoading from "./WaitLoading";
 
 const Modal = (props) => {
-  const [postComics, setPostComics] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const comics = useSelector((store) => store.comics.array);
+  const loading = useSelector((store) => store.comics.waitStateComics);
   const id = props.modalInfo?.id;
-
+  const urlGetKey = new MarvelKey();
+  const key = urlGetKey.urlString();
+  console.log("MODAL: el id del personaje es: ", id)
   useEffect(() => {
     if (id) {
-      const api = new MarvelAPI();
-      api.getMarvelComicsListByID(id)
-        .then((json) => {
-          const res = json;
-          const comics = res.data.results;
-          console.log(res);
-          setPostComics(comics);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.log(err);
-          setLoading(false);
-          window.alert("Error al descargar el contenido.. Intente mas tarde..."
-          );
-        });
+    dispatch(getComicsByIdAccion(id))
+    console.log("Pasando por el useEffect del comics")
     }
-  }, [id]);
+  }, [id])
 
-  
-  const urlGetKey = new MarvelAPI();
-  const key = urlGetKey.urlString();
+
   return (
     <div
       id="miModal"
@@ -47,7 +38,7 @@ const Modal = (props) => {
           </a>
           <h2> {props.modalInfo?.name}</h2>
         </div>
-        <ModalListComics comicsItems={postComics} urlKey={key} />
+        <ModalListComics comicsItems={comics} urlKey={key} />
         <WaitLoading estado={loading} />
       </div>
     </div>
