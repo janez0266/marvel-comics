@@ -30,7 +30,6 @@ const Cards = (props) => {
             key={idx}
             onClick={() => props.handleOpenModal(item)}
             style={{ display: `${props.estado ? "flex" : "none"}`} }>
-              {console.log("estado ventanas cardspersonajes: ", props.estado)}
             <div className="cardImage">
               <img
                 src={mostrarImagen(
