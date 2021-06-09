@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { getCharactersByNameAccion } from "../APIS/MarvelAPI";
+import { getComicsByNameAccion } from "../APIS/ComicsAPI";
 import { useDispatch } from "react-redux";
 import loupe from "../images/loupe.svg";
 import "./Buscador.css";
@@ -19,6 +20,8 @@ const Buscador = () => {
     e.preventDefault();
     console.log({ value });
     dispatch(getCharactersByNameAccion(value));
+    dispatch(getComicsByNameAccion(value));
+    
   };
 
   return (

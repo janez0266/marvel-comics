@@ -1,7 +1,7 @@
 import React from "react";
 import star from "../images/star_favorite_white.png";
 import BackImg from "../images/marvel-characters.jpg";
-import "./Cards.css";
+import "./CardsComics.css";
 
 function mostrarImagen(imagenPath, imagenKey) {
   const badImage =
@@ -14,7 +14,7 @@ function mostrarImagen(imagenPath, imagenKey) {
   }
 }
 
-const Cards = (props) => {
+const CardsComics = (props) => {
   if (props.cardItems.length === 0) {
     return (
       <div className="modal-list">
@@ -28,7 +28,7 @@ const Cards = (props) => {
           <div
             className="cards"
             key={idx}
-            onClick={() => props.handleOpenModal(item)}
+            // onClick={() => props.handleOpenModal(item)}
             style={{ display: `${props.estado ? "flex" : "none"}`} }>
               {console.log("estado ventanas cardspersonajes: ", props.estado)}
             <div className="cardImage">
@@ -43,7 +43,7 @@ const Cards = (props) => {
               <img src={star}></img>
             </div>
             <div className="name">
-              <h2>{item.name}</h2>
+              <h2>{item.title}</h2>
             </div>
           </div>
         ))}
@@ -51,4 +51,4 @@ const Cards = (props) => {
   );
 };
 
-export default Cards;
+export default CardsComics;

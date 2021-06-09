@@ -1,11 +1,13 @@
 import {createStore, combineReducers, compose, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
-import marvelReducer from "../APIS/MarvelAPI";
+import marvelReducer from "../APIS/MarvelReducer";
 import comicsReducer from "../APIS/ComicsAPI";
+import toolsReducer from "../APIS/ToolsReducer";
 
 const rootReducer = combineReducers({
     personajes: marvelReducer,
-    comics: comicsReducer
+    comics: comicsReducer,
+    tools: toolsReducer
 })
 
 //configura la extension de chrome

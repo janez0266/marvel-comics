@@ -42,9 +42,10 @@
   <li>Creación de una rama "Feature-galeria-random" para trabajar lo referente a la api y carga inicial de los personajes</li>
   <li>Se incluye todo lo referente a la carga inicial de la página, mostrando ocho personajes de forma aleatoria y diferentes cada vez que se carga la página</li>
   <li>Se habilita una ventana que informa que esperea que cargue la página</li>
-  <li>Se activa la ventana MODAL al hacer click a la Card</li>
+  <li>Se activa la ventana MODAL al hacer click a la Card, y muestra el listado de comics que pertenecen a ese personaje</li>
   <li>Se aseguran las claves (Key) publicas y privadas en .env</li>
 </ul>
+
 ## Feature Redux
 <ul>
   <li>Se implementó Redux para manejar las variables y arreglos globales </li>
@@ -52,6 +53,15 @@
   <li>Se agregaron dos botones "Atras" y "Siguiente" al recibir la lista de personajes por busqueda y poder visualizar el resultado en grupos de 8 cards</li>
   <li>Se agrego un link que dirige a la página del comics al hacer click a un elemento del listado de comics</li>
   <li>Ajustes de estilo</li>
+
+## Feature Buscador combinado
+<ul>
+  <li>Se habilitó el acceso a cada cómic al hacer click sobre él y redirigir en una nueva ventana al recurso de la página de Marvel</li>
+  <li>se habilitó el buscador para buscar coincidencias tanto en personajes como en cómics. El resultado de la búsqueda se muestra simultáneamente en dos pantallas en formato de Cards, activadas una a la vez mediante un selector</li>
+  <li>Se colocaron dos botones de navegación para cada galería: la de personajes y la de cómics. Ellos se activan y desactivan dependiendo de la selección que se haga</li>
+</ul>
+
+
  ## Elaborado por:
  Ing. Julio Añez
 
