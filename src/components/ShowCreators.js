@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import {cap} from "../utils/Constants"
 
  const ShowCreators = (props) => {
@@ -20,4 +21,11 @@ import {cap} from "../utils/Constants"
         </div>
     )
 }
+ShowCreators.propTypes = {
+    creatorsItems: PropTypes.array,  
+      item: PropTypes.shape({
+        role: PropTypes.string,
+        name: PropTypes.string
+      })
+  }
 export default ShowCreators;

@@ -41,12 +41,12 @@ const ComicsFull = (props) => {
 
 ComicsFull.propTypes = {
     estado: PropTypes.bool,
-    comicFull: PropTypes.shape({
-      image: PropTypes.string,
-      title: PropTypes.string,
-      published: PropTypes.string,
-      description: PropTypes.string,
-      urlComic: PropTypes.string
-  }) 
+    image: PropTypes.string,
+    title: PropTypes.string,
+    published: PropTypes.string,
+    description: PropTypes.string,
+    urlComic: PropTypes.string
+  
 }
+
 export default ComicsFull;

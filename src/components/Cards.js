@@ -40,16 +40,10 @@ const Cards = (props) => {
             key={idx}
             onClick={() => props.handleOpenModal(item)}
             style={{ display: `${props.estado ? "flex" : "none"}`} }>
-            <div className="cardImage"     >
-
+            <div className="cardImage" >
 {/* onClick={addCharToFavorite(item.name, item.id, mostrarImagen(
-                  item.thumbnail.path + "." + item.thumbnail.extension,
-                  props.urlKey
-                ) )} */}
-
-              <img 
-                src={mostrarImagen(
-                  item.thumbnail.path + "." + item.thumbnail.extension)}>
+                  item.thumbnail.path + "." + item.thumbnail.extension, props.urlKey) )} */}
+              <img src={mostrarImagen( item.thumbnail.path + "." + item.thumbnail.extension)}>
               </img>
             </div>
             <div className="starCard">
@@ -65,9 +59,16 @@ const Cards = (props) => {
 };
 
 Cards.propTypes = {
-  cardItems: PropTypes.array,
-  estado: PropTypes.bool
-
+  estado: PropTypes.bool,
+  cardItems: PropTypes.array,  
+    item: PropTypes.shape({
+      name: PropTypes.string,
+      thumbnail: PropTypes.shape({
+        path: PropTypes.string,
+        extension: PropTypes.string
+      })
+    })
 }
+
 
 export default Cards;

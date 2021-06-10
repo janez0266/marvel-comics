@@ -53,8 +53,16 @@ const CardsComics = (props) => {
 };
 
 CardsComics.propTypes = {
+  estado: PropTypes.bool,
   cardItems: PropTypes.array,
-  estado: PropTypes.bool
+  item: PropTypes.shape({
+      name: PropTypes.string,
+      thumbnail: PropTypes.shape({
+        path: PropTypes.string,
+        extension: PropTypes.string
+      })
+    })
 
 }
+
 export default CardsComics;
