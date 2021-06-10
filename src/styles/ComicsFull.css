@@ -1,0 +1,79 @@
+
+.comicItemC {
+  width: 90%;
+  height: 741px;
+  top: 119px;
+  margin: 6px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 4px 3px 15px 0 rgb(0 0 0 / 20%), 0 15px 20px 0 rgb(0 0 0 / 19%);
+  position: absolute;
+  }
+ .imgComiC {
+    width: 60%;
+    height: 100%;
+    vertical-align: middle;
+    display: flex;
+    overflow: hidden;
+    display: contents;
+  }
+.imgComiC img {
+    width: auto;
+  }
+  .infoComiC {
+    width: 75%;
+    margin: 18px 53px;
+    overflow: auto;
+    font-size: 16px;
+  }
+  .infoComiC h2 {
+    margin-bottom: 5px;
+    font-size: 24px;
+    padding-bottom: 40px;
+    padding-top: 20px;
+  }
+.infoComiC a {
+    padding: 10px;
+    background-color: #f11212;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .infoButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .infoButtons p {
+    margin-top: 0px;
+    margin-left: 20px;
+    
+
+  }
+ 
+  
+
+  .infotext {
+    margin: 10px 0;
+    font-weight: 600;
+  }
+  .infotext p {
+    padding: 2px;
+  }
+  .descripcionC {
+    padding: 38px 0;
+    line-height: 28px;
+  }
+  
+  .back {
+    padding: 10px;
+    width: 102px;
+    background-color: #f11212;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 45px;
+  }

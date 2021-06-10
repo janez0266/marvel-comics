@@ -1,24 +1,21 @@
 import React, { useEffect } from "react";
-import "./Modal.css";
+import PropTypes from 'prop-types';
+import "../styles/Modal.css";
 import { useSelector } from "react-redux";
 import {useDispatch} from "react-redux";
 import {getComicsByIdAccion} from "../APIS/ComicsAPI"
-import MarvelKey from "../APIS/MarvelKey";
+import {urlStringKey} from "../APIS/MarvelKey"
 import ModalListComics from "./ModalListComics";
-import WaitLoading from "./WaitLoading";
+
 
 const Modal = (props) => {
   const dispatch = useDispatch();
   const comics = useSelector((store) => store.comics.array);
-  const loading = useSelector((store) => store.comics.waitStateComics);
   const id = props.modalInfo?.id;
-  const urlGetKey = new MarvelKey();
-  const key = urlGetKey.urlString();
-  console.log("MODAL: el id del personaje es: ", id)
+
   useEffect(() => {
     if (id) {
     dispatch(getComicsByIdAccion(id))
-    console.log("Pasando por el useEffect del comics")
     }
   }, [id])
 
@@ -38,11 +35,19 @@ const Modal = (props) => {
           </a>
           <h2> {props.modalInfo?.name}</h2>
         </div>
-        <ModalListComics comicsItems={comics} urlKey={key} />
-        <WaitLoading estado={loading} />
+        <ModalListComics comicsItems={comics} urlKey={urlStringKey} />
       </div>
     </div>
   );
 };
+
+Modal.propTypes = {
+  handleClick: PropTypes.func,
+  isModalOpen: PropTypes.bool,
+  name: PropTypes.string,
+  id: PropTypes.number,
+
+  
+}
 
 export default Modal;

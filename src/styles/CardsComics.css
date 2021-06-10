@@ -1,13 +1,3 @@
-
-.contenedor {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 180px;   
-    max-width: 1500px; 
-    margin-bottom: 100px;
-}
-
 .cards {
     width: 350px;
     height: 470px;
@@ -65,12 +55,7 @@
     cursor: pointer;
 }
 
-@media (max-width: 700px){
-    .contenedor {
-        margin-top: 100px;
-    }
 
-}
 @media (max-width: 500px){
     .cards {
         width: 300px;

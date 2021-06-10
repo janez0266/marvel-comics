@@ -1,110 +1,130 @@
 import axios from "axios";
-import MarvelKey from "./MarvelKey";
+import {urlStringKey} from "../APIS/MarvelKey"
+import {loadingWindows} from "../APIS/ToolsActions";
 
 // constantes
-const dataInicial = {
-    array: [],    
-    name: "",
-    waitStateComics: false
-}
+const addOffset = 8;
+const urlBaseComicsName = "https://gateway.marvel.com:443/v1/public/comics";
+const urlBaseComics = "https://gateway.marvel.com:443/v1/public/characters/";
 
 
-const urlGetKey = new MarvelKey();
-const URL_STRING_KEY = urlGetKey.urlString();
-const urlBaseComics ="https://gateway.marvel.com:443/v1/public/characters/"
-
-const OBTENER_COMICS_POR_ID_EXITO = "OBTENER_COMICS_POR_ID_EXITO";
-const OBTENER_COMICS_POR_NOMBRE_EXITO = "OBTENER_COMICS_POR_NOMBRE_EXITO";
-const SET_WAIT = "SET_WAIT";
-//const SHOW_BUTTONS = "SHOW_BUTTONS";
-
-
-//const SHOW_BUTTONS = "SHOW_BUTTONS";
-
-export default function comicsReducer(state = dataInicial, action){
-    switch(action.type){
-        case OBTENER_COMICS_POR_ID_EXITO:
-            return {...state, array: action.payload.array, 
-                waitStateComics: action.payload.waitStateComics
-            }
-        case OBTENER_COMICS_POR_NOMBRE_EXITO:
-            return {...state, array: action.payload.array,                 
-                name: action.payload.name, 
-                waitStateComics: action.payload.waitStateComics
-            }
-       
-        case SET_WAIT:
-            return {...state, waitStateComics: action.payload.waitStateComics}
-        default:
-            return state
-
-    }
-
-}
 
 //acciones
-export const getComicsByIdAccion = (id) => async (dispatch, getState) => {
-  
-  const urlCharacter = `${urlBaseComics}${id}/comics?orderBy=onsaleDate&${URL_STRING_KEY}`;
+export const getComicsByIdAccion = (id) => async (dispatch) => {
+
+  const urlCharacter = `${urlBaseComics}${id}/comics?orderBy=onsaleDate&${urlStringKey}`;
+  dispatch(loadingWindows(true));
   try {
-    dispatch({
-      type: SET_WAIT,
-      payload: {
-          waitStateComics: true
-      },
-    });
-    console.log("limpiando store comics");
     const res = await axios.get(`${urlCharacter}`);
     dispatch({
-      type: OBTENER_COMICS_POR_ID_EXITO,
+      type: "OBTENER_COMICS_POR_ID_EXITO",
       payload: {
-        array: res.data.data.results,
-        waitStateComics: false
+        array: res.data.data.results
       },
     });
-    console.log("Personaje: ", id," -URL: " ,urlCharacter);
-    console.log(res.data.data.results);
-    console.log("WaitStateComics is: ", getState().waitStateComics)
+ 
   } catch (error) {
     console.log(error);
-    dispatch({
-      type: SET_WAIT,
-      payload: {
-        waitStateComics: false,
-      },
-    });
   }
+  dispatch(loadingWindows(false));
 };
 
-// export const getComicsByNameAccion = (personaje) => async (dispatch) => {
-//   const limit = 8;
-//   const orderBy = "name";
-//   const urlCharacter = `${urlBaseCharacters}?nameStartsWith=${personaje}&limit=${limit}&orderBy=${orderBy}&${URL_STRING_KEY}`;
-//   try {
-//     dispatch({
-//       type: SET_WAIT,
-//       payload: {
-//         waitState: true,
-//       },
-//     });
-//     const res = await axios.get(`${urlCharacter}`);
-//     dispatch({
-//       type: OBTENER_COMICS_POR_NOMBRE_EXITO,
-//       payload: {
-//         array: res.data.data.results,
-//         length: res.data.data.total,
-//         name: personaje,
-//         waitState: false,
-//         showButtons: true,
-//       },
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     dispatch({
-//       type: SET_WAIT,
-//       payload: {
-//         waitState: false,
-//       },
-//     });
-//   }
-// };
+export const getComicsByNameAccion = (title) => async (dispatch) => {
+  const urlCharacterComics = `${urlBaseComicsName}?titleStartsWith=${title}&limit=8&orderBy=title&${urlStringKey}`;
+  dispatch(loadingWindows(true));
+  try {
+    const res = await axios.get(`${urlCharacterComics}`);
+    dispatch({
+      type: "OBTENER_COMICS_POR_NOMBRE_EXITO",
+      payload: {
+        arrayComics: res.data.data.results,
+        length: res.data.data.total,
+        title: title
+      },
+    });
+    //console.log("arreglo busqueda por comics: ", getState().comics.arrayComics)
+  } catch (error) {
+    console.log(error);
+    
+  }
+  dispatch(loadingWindows(false));
+};
+
+export const siguienteComicsAccion = () => async (dispatch, getState) => {
+  const offset = getState().comics.offset
+  const title = getState().comics.title
+  const siguiente = offset + addOffset
+  const urlCharacter = `${urlBaseComicsName}?titleStartsWith=${title}&limit=8&offset=${siguiente}&orderBy=title&${urlStringKey}`
+  const length = getState().comics.length
+  
+  if(siguiente >= length) {console.log("exedido el nro de items a mostrar")
+  }else {
+      dispatch(loadingWindows(true));
+      try {
+          
+          const res = await axios.get(`${urlCharacter}`)
+          dispatch({
+              type: "SIGUIENTE_COMICS_EXITO",
+              payload: {
+                  arrayComics: res.data.data.results,
+                  offset: siguiente
+              }
+          })
+
+      } catch (error) {
+          console.log(error)
+             
+      }
+      dispatch(loadingWindows(false));
+  }
+}
+
+export const anteriorComicsAccion = () => async (dispatch, getState) => {
+  const offset = getState().comics.offset
+  const title = getState().comics.title
+  const siguiente = offset - addOffset
+  const urlCharacter = `${urlBaseComicsName}?titleStartsWith=${title}&limit=8&offset=${siguiente}&orderBy=title&${urlStringKey}`
+
+  if(siguiente < 0) {console.log("exedido el nro de items a mostrar")
+  }else {
+      dispatch(loadingWindows(true));
+      try {
+          
+          const res = await axios.get(`${urlCharacter}`)
+          dispatch({
+              type: "ANTERIOR_COMICS_EXITO",
+              payload: {
+                  arrayComics: res.data.data.results,
+                  offset: siguiente                    
+              }
+          })
+      } catch (error) {
+          console.log(error)
+         
+      }
+      dispatch(loadingWindows(false));
+  }
+
+}
+export const getComicFull = (id, title, description, image, published, creators, urlComic) => async (dispatch) => {
+
+  
+  const arrayComicFull = {
+      id: id,
+      title: title,
+      description: description,
+      image:image,
+      published: published,
+      creators: creators,
+      
+      urlComic: urlComic
+  }
+  dispatch({
+      type: "COMICS_FULL_EXITO",
+      payload: {
+          arrayComicFull: arrayComicFull                                    
+      }
+  })
+
+
+}

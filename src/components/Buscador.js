@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { getCharactersByNameAccion } from "../APIS/MarvelAPI";
+import { getComicsByNameAccion } from "../APIS/ComicsAPI";
 import { useDispatch } from "react-redux";
 import loupe from "../images/loupe.svg";
-import "./Buscador.css";
+import "../styles/Buscador.css";
 
 const Buscador = () => {
   const [value, setValue] = useState("");
@@ -17,8 +18,9 @@ const Buscador = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ value });
-    dispatch(getCharactersByNameAccion(value));
+    dispatch(getCharactersByNameAccion(value));   //Busca por personajes
+    dispatch(getComicsByNameAccion(value));       //Busca por comics
+    
   };
 
   return (

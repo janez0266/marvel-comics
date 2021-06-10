@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from 'prop-types';
+import {verify} from "../utils/Constants"
 
 
 const ModalListComics = (props) => {
@@ -15,7 +17,7 @@ const ModalListComics = (props) => {
         {props.comicsItems &&
           props.comicsItems.map((item, id) => (
 
-            <a href={item.urls[0].url} target="_blank" rel="noreferrer" key={id}>
+            <a href={verify(item.urls[0].url)} target="_blank" rel="noreferrer" key={id}>
             <div className="modalItem" >
               <div className="imgComic" >
                 <img
@@ -29,7 +31,7 @@ const ModalListComics = (props) => {
                 ></img>
               </div>
               <div className="infoComic">
-                <h2>{item.title} -- ID: {item.id}</h2>
+                <h2>{item.title}</h2>
                 <p>{item.description} </p>
               </div>
             </div>
@@ -41,5 +43,20 @@ const ModalListComics = (props) => {
     </>
   );
 };
+
+ModalListComics.propTypes = {
+  comicsItems: PropTypes.array,
+  urlKey: PropTypes.string,
+  item: PropTypes.shape({
+      urls: PropTypes.array,
+      title: PropTypes.string,
+      description: PropTypes.string,
+      thumbnail: PropTypes.shape({
+         path: PropTypes.string,
+        extension: PropTypes.string
+      })
+    })
+}
+
 
 export default ModalListComics;

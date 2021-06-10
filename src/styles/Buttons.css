@@ -1,0 +1,60 @@
+.buttons {
+    width: 80%;
+    height: 30px;
+    position: fixed;
+    top: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+   
+}
+
+.scrollButtons {
+    padding: 7px;
+    cursor: pointer;
+    background-color: rgb(210 239 208);
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+.scrollButtons p {
+    padding: 0 10px;
+}
+
+.scrollButtons-comics {
+    padding: 7px;
+    cursor: pointer;
+    background-color: rgb(253 249 200);
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    /* position: absolute; */
+}
+.scrollButtons-comics p {
+    padding: 0 20px;
+}
+.showCharactersComicsButtons {
+
+    cursor: pointer;
+   
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.showCharactersComicsButtons p {
+    padding: 0 20px;
+}
+.personajes {
+    background-color: rgb(210 239 208);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.comics {
+    background-color: rgb(253 249 200);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
