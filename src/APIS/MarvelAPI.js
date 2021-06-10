@@ -1,7 +1,7 @@
 import axios from "axios";
 import {urlStringKey} from "../APIS/MarvelKey"
 import {loadingWindows, showButtons, 
-    showCardsCharacters } from "../APIS/ToolsReducer"
+    showCardsCharacters } from "../APIS/ToolsActions"
 
 
 const urlBaseCharacters = "https://gateway.marvel.com:443/v1/public/characters"

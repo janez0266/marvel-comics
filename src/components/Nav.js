@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../images/logo.png";
 import star from "../images/star_favorite.png";
-import './Nav.css';
+import '../styles/Nav.css';
 import Buscador from "./Buscador";
 
 const Nav = () => {

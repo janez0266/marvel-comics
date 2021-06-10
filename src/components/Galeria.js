@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 // import {useDispatch} from "react-redux";
 // import {getCharactersAccion} from "../APIS/MarvelAPI"
-import "./Galeria.css";
+import "../styles/Galeria.css";
 import {urlStringKey} from "../APIS/MarvelKey"
 import Cards from "./Cards";
 import CardsComics from "./CardsComics";

@@ -1,5 +1,5 @@
 import React from 'react'
-import "./WaitLoading.css"
+import "../styles/WaitLoading.css"
 import PropTypes from 'prop-types'
 
 

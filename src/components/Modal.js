@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import "./Modal.css";
+import PropTypes from 'prop-types';
+import "../styles/Modal.css";
 import { useSelector } from "react-redux";
 import {useDispatch} from "react-redux";
 import {getComicsByIdAccion} from "../APIS/ComicsAPI"
@@ -39,5 +40,14 @@ const Modal = (props) => {
     </div>
   );
 };
+
+Modal.propTypes = {
+  handleClick: PropTypes.func,
+  isModalOpen: PropTypes.bool,
+  name: PropTypes.string,
+  id: PropTypes.number,
+
+  
+}
 
 export default Modal;

@@ -1,11 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import {useDispatch} from "react-redux";
 import {siguienteCharacterAccion, 
     anteriorCharacterAccion} from "../APIS/MarvelAPI"
 import {siguienteComicsAccion, 
         anteriorComicsAccion} from "../APIS/ComicsAPI"    
-import {showCardsCharacters, showCardsComics} from "../APIS/ToolsReducer"
-import "./Buttons.css"
+import {showCardsCharacters, showCardsComics} from "../APIS/ToolsActions"
+import "../styles/Buttons.css"
 
 
 const Buttons = (props) => {
@@ -30,6 +31,10 @@ const Buttons = (props) => {
       </div>
     )
 }
+Buttons.propTypes = {
+    estado: PropTypes.bool,
+    scrollButtonCard: PropTypes.bool
 
+}
 export default Buttons
 

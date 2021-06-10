@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import star from "../images/star_favorite_white.png";
 import {mostrarImagen} from "../APIS/MarvelKey"
-import "./Cards.css";
+import "../styles/Cards.css";
 
 // function addCharToFavorite(name, id, img) {
 
@@ -62,5 +63,11 @@ const Cards = (props) => {
     </>
   );
 };
+
+Cards.propTypes = {
+  cardItems: PropTypes.array,
+  estado: PropTypes.bool
+
+}
 
 export default Cards;

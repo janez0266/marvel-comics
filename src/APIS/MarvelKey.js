@@ -25,12 +25,6 @@ export const mostrarImagen =(imagenPath) =>{
     }
     }
 
-
-
-
-
-
-
     // miFetchMock() {
     //     return new Promise((resolve) => {
 

@@ -1,48 +1,13 @@
 import axios from "axios";
 import {urlStringKey} from "../APIS/MarvelKey"
-import {loadingWindows} from "../APIS/ToolsReducer";
+import {loadingWindows} from "../APIS/ToolsActions";
 
 // constantes
-const dataInicial = {
-    array: [],    
-    arrayComics: [],  
-    arrayComicFull: [],
-    offset: 0,  
-    title: "",
-    length: 0
-}
-
 const addOffset = 8;
 const urlBaseComicsName = "https://gateway.marvel.com:443/v1/public/comics";
 const urlBaseComics = "https://gateway.marvel.com:443/v1/public/characters/";
 
 
-
-export default function comicsReducer(state = dataInicial, action){
-    switch(action.type){
-        case "OBTENER_COMICS_POR_ID_EXITO":
-            return {...state, array: action.payload.array
-            }
-        case "OBTENER_COMICS_POR_NOMBRE_EXITO":
-            return {...state, arrayComics: action.payload.arrayComics,                 
-                title: action.payload.title,
-                length: action.payload.length
-            }     
-          case  "SIGUIENTE_COMICS_EXITO":
-            return {...state, arrayComics: action.payload.arrayComics, 
-              offset: action.payload.offset}
-          case  "ANTERIOR_COMICS_EXITO": 
-            return {...state, arrayComics: action.payload.arrayComics, 
-            offset: action.payload.offset }
-          case "COMICS_FULL_EXITO":
-            return {...state, arrayComicFull: action.payload.arrayComicFull}
-       
-        default:
-            return state
-
-    }
-
-}
 
 //acciones
 export const getComicsByIdAccion = (id) => async (dispatch) => {
@@ -141,7 +106,7 @@ export const anteriorComicsAccion = () => async (dispatch, getState) => {
   }
 
 }
-export const getComicFull = (id, title, description, image, published, writer, penciler, coverArtist, urlComic) => async (dispatch) => {
+export const getComicFull = (id, title, description, image, published, creators, urlComic) => async (dispatch) => {
 
   
   const arrayComicFull = {
@@ -150,12 +115,10 @@ export const getComicFull = (id, title, description, image, published, writer, p
       description: description,
       image:image,
       published: published,
-      writer: writer,
-      penciler: penciler,
-      coverArtist: coverArtist,
+      creators: creators,
+      
       urlComic: urlComic
   }
-  console.log("Mi Array dentro de ComicsApi", arrayComicFull)
   dispatch({
       type: "COMICS_FULL_EXITO",
       payload: {

@@ -1,10 +1,11 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import star from "../images/star_favorite_white.png";
 import {mostrarImagen} from "../APIS/MarvelKey"
 import {useDispatch} from "react-redux";
 import {getComicFull} from "../APIS/ComicsAPI"
-import {showComicFull} from "../APIS/ToolsReducer"
-import "./CardsComics.css";
+import {showComicFull} from "../APIS/ToolsActions"
+import "../styles/CardsComics.css";
 import {verify} from "../utils/Constants"
 
 
@@ -27,18 +28,13 @@ const CardsComics = (props) => {
             style={{ display: `${props.estado ? "flex" : "none"}`}} 
             onClick={() => {
               dispatch(showComicFull());
-              console.log(item);
               dispatch(getComicFull(item.id, item.title, item.description, 
                  mostrarImagen(item.thumbnail.path + "." + item.thumbnail.extension), 
                  verify(item.dates[0].date), 
-                 verify(item.creators.items[0].name), 
-                 verify(item.creators.items[2].name), 
-                 verify(item.creators.items[3].name), 
-                 verify(item.urls[0].url) ))              
-              
+                 verify(item.creators.items),                 
+                 verify(item.urls[0].url) ))
               }   }>
             <div className="cardImage"  >
-             
               <img
                 src={mostrarImagen(
                   item.thumbnail.path + "." + item.thumbnail.extension )}>
@@ -49,7 +45,6 @@ const CardsComics = (props) => {
             </div>
             <div className="name">
               <h2>{item.title}</h2>
-              
             </div>
           </div>
         ))}
@@ -57,4 +52,9 @@ const CardsComics = (props) => {
   );
 };
 
+CardsComics.propTypes = {
+  cardItems: PropTypes.array,
+  estado: PropTypes.bool
+
+}
 export default CardsComics;

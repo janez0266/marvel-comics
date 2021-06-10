@@ -1,7 +1,7 @@
 import {createStore, combineReducers, compose, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
 import marvelReducer from "../APIS/MarvelReducer";
-import comicsReducer from "../APIS/ComicsAPI";
+import comicsReducer from "../APIS/ComicsReducer";
 import toolsReducer from "../APIS/ToolsReducer";
 
 const rootReducer = combineReducers({

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {verify} from "../utils/Constants"
 
 
@@ -42,5 +43,15 @@ const ModalListComics = (props) => {
     </>
   );
 };
+
+ModalListComics.propTypes = {
+  comicsItems: PropTypes.array,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  urlKey: PropTypes.string,
+  extension: PropTypes.string,
+  path: PropTypes.string
+
+}
 
 export default ModalListComics;
