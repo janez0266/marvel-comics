@@ -3,21 +3,18 @@ import "./Modal.css";
 import { useSelector } from "react-redux";
 import {useDispatch} from "react-redux";
 import {getComicsByIdAccion} from "../APIS/ComicsAPI"
-import MarvelKey from "../APIS/MarvelKey";
+import {urlStringKey} from "../APIS/MarvelKey"
 import ModalListComics from "./ModalListComics";
-//import WaitLoading from "./WaitLoading";
+
 
 const Modal = (props) => {
   const dispatch = useDispatch();
   const comics = useSelector((store) => store.comics.array);
-  //const loading = useSelector((store) => store.comics.waitStateComics);
   const id = props.modalInfo?.id;
-  const urlGetKey = new MarvelKey();
-  const key = urlGetKey.urlString();
+
   useEffect(() => {
     if (id) {
     dispatch(getComicsByIdAccion(id))
-    console.log("Pasando por el useEffect del comics")
     }
   }, [id])
 
@@ -37,8 +34,7 @@ const Modal = (props) => {
           </a>
           <h2> {props.modalInfo?.name}</h2>
         </div>
-        <ModalListComics comicsItems={comics} urlKey={key} />
-        {/* <WaitLoading estado={loading} /> */}
+        <ModalListComics comicsItems={comics} urlKey={urlStringKey} />
       </div>
     </div>
   );

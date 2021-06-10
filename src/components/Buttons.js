@@ -2,7 +2,7 @@ import React from 'react'
 import {useDispatch} from "react-redux";
 import {siguienteCharacterAccion, 
     anteriorCharacterAccion} from "../APIS/MarvelAPI"
-    import {siguienteComicsAccion, 
+import {siguienteComicsAccion, 
         anteriorComicsAccion} from "../APIS/ComicsAPI"    
 import {showCardsCharacters, showCardsComics} from "../APIS/ToolsReducer"
 import "./Buttons.css"

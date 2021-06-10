@@ -59,6 +59,7 @@
   <li>Se habilitó el acceso a cada cómic al hacer click sobre él y redirigir en una nueva ventana al recurso de la página de Marvel</li>
   <li>se habilitó el buscador para buscar coincidencias tanto en personajes como en cómics. El resultado de la búsqueda se muestra simultáneamente en dos pantallas en formato de Cards, activadas una a la vez mediante un selector</li>
   <li>Se colocaron dos botones de navegación para cada galería: la de personajes y la de cómics. Ellos se activan y desactivan dependiendo de la selección que se haga</li>
+  <li>Al hacer click al Card de un Comics, este se muestra en detalle en pantalla completa, incluyendo un link a la página web del comic</li>
 </ul>
 
 

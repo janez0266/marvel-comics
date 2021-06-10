@@ -1,24 +1,20 @@
 import React from "react";
 import star from "../images/star_favorite_white.png";
-import BackImg from "../images/marvel-characters.jpg";
+import {mostrarImagen} from "../APIS/MarvelKey"
+import {useDispatch} from "react-redux";
+import {getComicFull} from "../APIS/ComicsAPI"
+import {showComicFull} from "../APIS/ToolsReducer"
 import "./CardsComics.css";
+import {verify} from "../utils/Constants"
 
-function mostrarImagen(imagenPath, imagenKey) {
-  const badImage =
-    "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg";
-
-  if (badImage === imagenPath) {
-    return BackImg;
-  } else {
-    return imagenPath + "?" + imagenKey;
-  }
-}
 
 const CardsComics = (props) => {
+
+  const dispatch = useDispatch();
   if (props.cardItems.length === 0) {
     return (
       <div className="modal-list">
-          <h1>... No hay datos que mostrar ....</h1>
+          <h1>... No hay Comics que mostrar ....  </h1>
       </div>
       )}
   return (
@@ -28,14 +24,24 @@ const CardsComics = (props) => {
           <div
             className="cards"
             key={idx}
-            // onClick={() => props.handleOpenModal(item)}
-            style={{ display: `${props.estado ? "flex" : "none"}`} }>
-            <div className="cardImage">
+            style={{ display: `${props.estado ? "flex" : "none"}`}} 
+            onClick={() => {
+              dispatch(showComicFull());
+              console.log(item);
+              dispatch(getComicFull(item.id, item.title, item.description, 
+                 mostrarImagen(item.thumbnail.path + "." + item.thumbnail.extension), 
+                 verify(item.dates[0].date), 
+                 verify(item.creators.items[0].name), 
+                 verify(item.creators.items[2].name), 
+                 verify(item.creators.items[3].name), 
+                 verify(item.urls[0].url) ))              
+              
+              }   }>
+            <div className="cardImage"  >
+             
               <img
                 src={mostrarImagen(
-                  item.thumbnail.path + "." + item.thumbnail.extension,
-                  props.urlKey
-                )}>
+                  item.thumbnail.path + "." + item.thumbnail.extension )}>
               </img>
             </div>
             <div className="starCard">
@@ -43,6 +49,7 @@ const CardsComics = (props) => {
             </div>
             <div className="name">
               <h2>{item.title}</h2>
+              
             </div>
           </div>
         ))}

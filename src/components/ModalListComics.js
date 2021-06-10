@@ -1,4 +1,5 @@
 import React from "react";
+import {verify} from "../utils/Constants"
 
 
 const ModalListComics = (props) => {
@@ -15,7 +16,7 @@ const ModalListComics = (props) => {
         {props.comicsItems &&
           props.comicsItems.map((item, id) => (
 
-            <a href={item.urls[0].url} target="_blank" rel="noreferrer" key={id}>
+            <a href={verify(item.urls[0].url)} target="_blank" rel="noreferrer" key={id}>
             <div className="modalItem" >
               <div className="imgComic" >
                 <img
@@ -29,7 +30,7 @@ const ModalListComics = (props) => {
                 ></img>
               </div>
               <div className="infoComic">
-                <h2>{item.title} -- ID: {item.id}</h2>
+                <h2>{item.title}</h2>
                 <p>{item.description} </p>
               </div>
             </div>

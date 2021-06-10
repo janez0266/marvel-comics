@@ -7,4 +7,8 @@ export const SHOW_BUTTONS = "SHOW_BUTTONS";
 
 
 
-//import {OBTENER_CHARACTERS_EXITO} from "./../utils/constants"
+export const verify = (value) => {
+    if(value == undefined) value="N/D";
+        return value
+
+}
