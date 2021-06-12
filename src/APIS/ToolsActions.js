@@ -100,6 +100,22 @@ export const showCardsComics = () => async (dispatch) => {
     });
 
   };
-
+  export const showPopupWindow = (msg) => async (dispatch) => {
+    dispatch({
+      type: "ACTIVAR_VENTANA_POPUP",
+      payload: {
+        showPopupWindow: true,
+        mensajePopupWindow: msg
+      },
+    });  
+    setTimeout(function(){  
+      dispatch({
+        type: "ACTIVAR_VENTANA_POPUP",
+        payload: {
+          showPopupWindow: false
+        },
+      });
+    }, 3000);
+  };
 
 

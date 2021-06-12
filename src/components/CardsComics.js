@@ -12,12 +12,12 @@ import {verify} from "../utils/Constants"
 const CardsComics = (props) => {
 
   const dispatch = useDispatch();
-  if (props.cardItems.length === 0 || props.cardItems === null) {
-    return (
-      <div className="cardsC">
-          <h1>... No hay Comics que mostrar ....  </h1>
-      </div>
-      )}
+  // if (props.cardItems.length === 0 || props.cardItems === null) {
+  //   return (
+  //     <div className="cardsC">
+  //         <h1>... No hay Comics que mostrar ....  </h1>
+  //     </div>
+  //     )}
   return (
     <>
       {props.cardItems &&

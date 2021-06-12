@@ -1,7 +1,8 @@
 import axios from "axios";
 import {urlStringKey} from "../APIS/MarvelKey"
 import {loadingWindows, showButtons, 
-    showCardsCharacters } from "../APIS/ToolsActions"
+    showCardsCharacters, showPopupWindow } from "../APIS/ToolsActions"
+
 
 
 const urlBaseCharacters = "https://gateway.marvel.com:443/v1/public/characters"
@@ -23,11 +24,12 @@ export const getCharactersAccion = () => async (dispatch) => {
         })
     } catch (error) {
         console.log(error);
+        dispatch(showPopupWindow("..Error al descargar los datos. Intente de nuevo..."));
     }
     dispatch(loadingWindows(false));
 }
 
-export const getCharactersByNameAccion = (personaje) => async (dispatch) => {
+export const getCharactersByNameAccion = (personaje) => async (dispatch, getState) => {
     const urlCharacter = `${urlBaseCharacters}?nameStartsWith=${personaje}&limit=8&orderBy=name&${urlStringKey}`
     dispatch(loadingWindows(true));
     try {
@@ -40,10 +42,15 @@ export const getCharactersByNameAccion = (personaje) => async (dispatch) => {
                 name: personaje                
             }
         })
-        dispatch(showButtons(true));
+        
         dispatch(showCardsCharacters());
+        const exist = getState().personajes.length
+        if(exist === 0)
+        dispatch(showPopupWindow("...No hay personajes que mostrar. Intente de nuevo..."));
+        else dispatch(showButtons(true));
     } catch (error) {
         console.log(error);
+        dispatch(showPopupWindow("..Error al descargar los datos del personaje. Intente de nuevo..."));
     }
     dispatch(loadingWindows(false));
 }
@@ -55,7 +62,7 @@ export const siguienteCharacterAccion = () => async (dispatch, getState) => {
     const urlCharacter = `${urlBaseCharacters}?nameStartsWith=${name}&limit=8&offset=${siguiente}&orderBy=name&${urlStringKey}`
     const length = getState().personajes.length
     
-    if(siguiente >= length) {console.log("exedido el nro de items a mostrar")
+    if(siguiente >= length) {dispatch(showPopupWindow("..No hay mas datos que mostrar..."))
     }else {
         dispatch(loadingWindows(true));
         try {
@@ -69,31 +76,33 @@ export const siguienteCharacterAccion = () => async (dispatch, getState) => {
             })
         } catch (error) {
             console.log(error)
+            dispatch(showPopupWindow("..Error al descargar los datos del personaje. Intente de nuevo..."));
         }
         dispatch(loadingWindows(false));
     }
 }
 
 export const anteriorCharacterAccion = () => async (dispatch, getState) => {
-    const offset = getState().personajes.offset
-    const name = getState().personajes.name
-    const siguiente = offset - addOffset
-    const urlCharacter = `${urlBaseCharacters}?nameStartsWith=${name}&limit=8&offset=${siguiente}&orderBy=name&${urlStringKey}`
+    const offset = getState().personajes.offset;
+    const name = getState().personajes.name;
+    const siguiente = offset - addOffset;
+    const urlCharacter = `${urlBaseCharacters}?nameStartsWith=${name}&limit=8&offset=${siguiente}&orderBy=name&${urlStringKey}`;
 
-    if(siguiente < 0) {console.log("exedido el nro de items a mostrar")
-    }else {
+    if(siguiente < 0) { dispatch(showPopupWindow("..No hay mas datos que mostrar..."));
+    } else {
         dispatch(loadingWindows(true));
         try {
-            const res = await axios.get(`${urlCharacter}`)
+            const res = await axios.get(`${urlCharacter}`);
             dispatch({
                 type: "ANTERIOR_CHARACTER_EXITO",
                 payload: {
                     array: res.data.data.results,
                     offset: siguiente                    
                 }
-            })
+            });
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            dispatch(showPopupWindow("..Error al descargar los datos del personaje. Intente de nuevo..."));
         }
         dispatch(loadingWindows(false));
     }

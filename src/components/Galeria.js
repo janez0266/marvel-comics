@@ -11,6 +11,7 @@ import ComicsFull from "./ComicsFull";
 import WaitLoading from "./WaitLoading";
 import Modal from "./Modal";
 import Buttons from "./Buttons";
+import Popup from "./Popup";
 
 const Galeria = () => {
   // variables Redux
@@ -27,6 +28,8 @@ const Galeria = () => {
 
   const showCardFull = useSelector((store) => store.tools.comicFullShow);
   const comicFullItemShow = useSelector((store) => store.comics.arrayComicFull);
+  const showPopup = useSelector((store)=> store.tools.showPopupWindow);
+  const msgPopup = useSelector((store)=> store.tools.mensajePopupWindow);
   //Variables HOOKs
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalInfo, setModalInfo] = useState({});
@@ -79,6 +82,7 @@ const Galeria = () => {
           isModalOpen={isModalOpen}
           modalInfo={modalInfo}
         />
+        <Popup estado={showPopup} mensaje={msgPopup} />
       </div>
     </>
   );

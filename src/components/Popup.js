@@ -1,11 +1,19 @@
 import React from 'react'
-import "../styles/Popups.css"
+import "../styles/Popup.css"
+import alerta from "../images/alerta.png"
 
-const Popup = () => {
+const Popup = (props) => {
     return (
         
-        <div className="popup" id="popup">
-            <p>mensaje popup de poca duracion</p>
+
+        <div className="popup"  style={{ height: `${props.estado ? "200px" : "0"}`} }>
+            <div className= "popupImage">
+                <img src={alerta} />
+            </div>
+            <div className="popupText">
+                <p>{props.mensaje}</p>
+            </div>
+            
         </div>
         
     )

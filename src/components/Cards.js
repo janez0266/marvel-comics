@@ -3,16 +3,20 @@ import PropTypes from "prop-types";
 import { mostrarImagen } from "../APIS/MarvelKey";
 import "../styles/Cards.css";
 import CardStar from "./CardStar";
+//import {useDispatch} from "react-redux";
+//import {showPopupWindow} from "../APIS/ToolsActions"
 
-const NoCharacters = () => (
-  <div className="cards">
-    <h1>... No hay personajes que mostrar .... </h1>
-  </div>
-);
+// const NoCharacters = () => (
+//   <div className="cards">
+//     <h1>... No hay personajes que mostrar .... </h1>
+//   </div>
+// );
 
 const Cards = (props) => {
-  if (props.cardItems?.length === 0 || props.cardItems === null)
-    return <NoCharacters />;
+  // const dispatch = useDispatch();
+  // if (props.cardItems?.length === 0 || props.cardItems === null)
+  //   // return <NoCharacters />;
+  //   return () => dispatch(showPopupWindow("...No hay personajes que mostrar ...."));
   return (
     <>
       {props.cardItems &&
