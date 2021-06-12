@@ -19,14 +19,13 @@
 .name {    
     padding-left: 20px;
     padding-bottom: 10px;
- 
+    z-index: 2;
 
 }
 .cardImage {
     width: 350px;
     height: 470px;
     position: absolute;
-    z-index: -1;
     vertical-align: middle;
     text-align: center;
     display: flex;
@@ -44,6 +43,7 @@
     width: 310px;
     height: 40px;
     margin-top: 20px;
+    z-index: 2;
 }
 .starCard img {
     width: 30px;

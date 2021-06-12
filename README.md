@@ -62,6 +62,12 @@
   <li>Al hacer click al Card de un Comics, este se muestra en detalle en pantalla completa, incluyendo un link a la página web del comic</li>
 </ul>
 
+## Feature Favoritos Personajes
+<ul>
+<li>Se habilito agregar los cards de los personajes a la lista de favoritos. Estos se almacenan en el Local Storage para poder consultarlos en cualquier ocasion</li>
+<li>Al hacer click en la estrella de la Card, se agrega al listado, y al volver a hacer click se elimina del listado</li>
+<li>Al hacer click a la estrella de la barra de navegación, se muestran todos los favoritos en el mismo formato de las Cards</li>
+</ul>
 
  ## Elaborado por:
  Ing. Julio Añez

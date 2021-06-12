@@ -8,15 +8,12 @@ const urlBaseCharacters = "https://gateway.marvel.com:443/v1/public/characters"
 const addOffset = 8;
 
 
-
 //acciones
 export const getCharactersAccion = () => async (dispatch) => {
     const offset =  Math.trunc(Math.floor(Math.random() * 1000) + 1);
     const urlCharacter = `${urlBaseCharacters}?limit=8&offset=${offset}&orderBy=modified&${urlStringKey}`
-
     dispatch(loadingWindows(true));
     try {
-        
         const res = await axios.get(`${urlCharacter}`)
         dispatch({
             type: "OBTENER_CHARACTERS_EXITO",
@@ -24,7 +21,6 @@ export const getCharactersAccion = () => async (dispatch) => {
                 array: res.data.data.results
             }
         })
-        console.log("Url general de personajes: ",urlCharacter);
     } catch (error) {
         console.log(error);
     }
@@ -34,24 +30,20 @@ export const getCharactersAccion = () => async (dispatch) => {
 export const getCharactersByNameAccion = (personaje) => async (dispatch) => {
     const urlCharacter = `${urlBaseCharacters}?nameStartsWith=${personaje}&limit=8&orderBy=name&${urlStringKey}`
     dispatch(loadingWindows(true));
-    
     try {
-        
         const res = await axios.get(`${urlCharacter}`)
         dispatch({
             type: "OBTENER_CHARACTER_POR_NOMBRE_EXITO",
             payload: {
                 array: res.data.data.results,
                 length: res.data.data.total,
-                name: personaje               
+                name: personaje                
             }
         })
         dispatch(showButtons(true));
         dispatch(showCardsCharacters());
-        
     } catch (error) {
         console.log(error);
-              
     }
     dispatch(loadingWindows(false));
 }
@@ -67,7 +59,6 @@ export const siguienteCharacterAccion = () => async (dispatch, getState) => {
     }else {
         dispatch(loadingWindows(true));
         try {
-            
             const res = await axios.get(`${urlCharacter}`)
             dispatch({
                 type: "SIGUIENTE_CHARACTERS_EXITO",
@@ -76,10 +67,8 @@ export const siguienteCharacterAccion = () => async (dispatch, getState) => {
                     offset: siguiente
                 }
             })
-
         } catch (error) {
             console.log(error)
-               
         }
         dispatch(loadingWindows(false));
     }
@@ -95,7 +84,6 @@ export const anteriorCharacterAccion = () => async (dispatch, getState) => {
     }else {
         dispatch(loadingWindows(true));
         try {
-            
             const res = await axios.get(`${urlCharacter}`)
             dispatch({
                 type: "ANTERIOR_CHARACTER_EXITO",
@@ -106,12 +94,21 @@ export const anteriorCharacterAccion = () => async (dispatch, getState) => {
             })
         } catch (error) {
             console.log(error)
-           
         }
         dispatch(loadingWindows(false));
     }
-
 }
 
 
-
+export const getFavoritosAccion = () => async (dispatch) => {
+    const arrayFavoritos = JSON.parse(localStorage.getItem("favPersonajes")) || [];
+    //const arrayFavoritos = getState().favorite.arrayFav;
+    console.log(arrayFavoritos);
+    dispatch({
+            type: "OBTENER_CHARACTERS_FAVORITOS_EXITO",
+            payload: {
+                array: arrayFavoritos
+            }
+        })
+    dispatch(showButtons(true));
+}

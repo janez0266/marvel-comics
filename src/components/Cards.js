@@ -1,56 +1,29 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import star from "../images/star_favorite_white.png";
-import {mostrarImagen} from "../APIS/MarvelKey"
+import PropTypes from "prop-types";
+import { mostrarImagen } from "../APIS/MarvelKey";
 import "../styles/Cards.css";
+import CardStar from "./CardStar";
 
-// function addCharToFavorite(name, id, img) {
-
-//   var miObjetoFav = { 'name': name, "id": id, "img": img };
-//   var datos_existentes = localStorage.getItem('favPersonajes');
-//   // //datos_existentes = datos_existentes === null ? [] : JSON.parse(datos_existentes);
-//   datos_existentes = datos_existentes === null ? [] : datos_existentes;
-//   //datos_existentes.push(miObjetoFav);
- 
-//   // //localStorage.setItem('favPersonajes', JSON.stringify(datos_existentes));
-//   localStorage.setItem('favPersonajes', datos_existentes);
-
-//   //console.log('objeto: ', miObjetoFav);
-
-//   //var guardado = localStorage.getItem('datos');
-  
-
-// }
-
-
+const NoCharacters = () => (
+  <div className="cards">
+    <h1>... No hay personajes que mostrar .... </h1>
+  </div>
+);
 
 const Cards = (props) => {
-  if (props.cardItems.length === 0) {
-    return (
-      <div className="modal-list">
-          <h1>... No hay personajes que mostrar ....  </h1>
-      </div>
-      )}
+  if (props.cardItems?.length === 0 || props.cardItems === null)
+    return <NoCharacters />;
   return (
     <>
       {props.cardItems &&
         props.cardItems.map((item, idx) => (
-          <div
-            className="cards"
-            key={idx}
-            onClick={() => props.handleOpenModal(item)}
-            style={{ display: `${props.estado ? "flex" : "none"}`} }>
-            <div className="cardImage" >
-{/* onClick={addCharToFavorite(item.name, item.id, mostrarImagen(
-                  item.thumbnail.path + "." + item.thumbnail.extension, props.urlKey) )} */}
-              <img src={mostrarImagen( item.thumbnail.path + "." + item.thumbnail.extension)}>
-              </img>
+          <div className="cards" key={idx} style={{ display: `${props.estado ? "flex" : "none"}` }}>
+            <div className="cardImage" onClick={() => props.handleOpenModal(item)} >
+              <img src={mostrarImagen(item.thumbnail.path + "." + item.thumbnail.extension)} />
             </div>
-            <div className="starCard">
-              <img src={star}></img>
-            </div>
+              <CardStar itemValues={item} />  
             <div className="name">
-              <h2>{item.name}</h2>
+                <h2>{item.name}</h2>
             </div>
           </div>
         ))}
@@ -60,15 +33,14 @@ const Cards = (props) => {
 
 Cards.propTypes = {
   estado: PropTypes.bool,
-  cardItems: PropTypes.array,  
-    item: PropTypes.shape({
-      name: PropTypes.string,
-      thumbnail: PropTypes.shape({
-        path: PropTypes.string,
-        extension: PropTypes.string
-      })
-    })
-}
-
+  cardItems: PropTypes.array,
+  item: PropTypes.shape({
+    name: PropTypes.string,
+    thumbnail: PropTypes.shape({
+      path: PropTypes.string,
+      extension: PropTypes.string,
+    }),
+  }),
+};
 
 export default Cards;

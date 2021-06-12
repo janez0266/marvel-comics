@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import {useDispatch} from "react-redux";
 import {showCardsComics, showButtons} from "../APIS/ToolsActions"
 import ShowCreators from "./ShowCreators"
-//import star from "../images/star_favorite_white.png";
-//import { mostrarImagen } from "../APIS/MarvelKey";
-//import imgcomic from "../images/5155c42422277.jpg"
+import {fecha} from "../utils/Constants"
 import "../styles/ComicsFull.css";
 
 const ComicsFull = (props) => {
@@ -27,7 +25,7 @@ const ComicsFull = (props) => {
                 </div>
                 <h2> {props.comicFull.title}</h2>
                 <div className="infotext">
-                   <p>Published: {props.comicFull.published}</p>
+                   <p>Published: {fecha(props.comicFull.published)}</p>
                    <p>Creators: </p>
                    <ShowCreators creatorsItems={props.comicFull.creators} />               
                 </div>
