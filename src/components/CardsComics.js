@@ -12,18 +12,18 @@ import {verify} from "../utils/Constants"
 const CardsComics = (props) => {
 
   const dispatch = useDispatch();
-  if (props.cardItems.length === 0) {
-    return (
-      <div className="modal-list">
-          <h1>... No hay Comics que mostrar ....  </h1>
-      </div>
-      )}
+  // if (props.cardItems.length === 0 || props.cardItems === null) {
+  //   return (
+  //     <div className="cardsC">
+  //         <h1>... No hay Comics que mostrar ....  </h1>
+  //     </div>
+  //     )}
   return (
     <>
       {props.cardItems &&
         props.cardItems.map((item, idx) => (
           <div
-            className="cards"
+            className="cardsC"
             key={idx}
             style={{ display: `${props.estado ? "flex" : "none"}`}} 
             onClick={() => {
@@ -31,24 +31,26 @@ const CardsComics = (props) => {
               dispatch(getComicFull(item.id, item.title, item.description, 
                  mostrarImagen(item.thumbnail.path + "." + item.thumbnail.extension), 
                  verify(item.dates[0].date), 
-                 verify(item.creators.items),                 
+                 item.creators.items,                 
                  verify(item.urls[0].url) ))
               }   }>
-            <div className="cardImage"  >
+            <div className="cardImageC"  >
               <img
                 src={mostrarImagen(
                   item.thumbnail.path + "." + item.thumbnail.extension )}>
               </img>
             </div>
-            <div className="starCard">
+            <div className="starCardC">
               <img src={star}></img>
             </div>
-            <div className="name">
+            <div className="nameC">
               <h2>{item.title}</h2>
             </div>
           </div>
         ))}
     </>
+
+
   );
 };
 

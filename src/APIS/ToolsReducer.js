@@ -6,7 +6,9 @@ const dataInicial = {
     showButtonsScrollCardsComics: false, // oculta o muestra los botones de dezplazamiento de las cards de comics
     cardsCharacters: true,        //oculta o muestra las cards de personajes
     cardsComics: false,            // oculta o muestra las cards de comics
-    comicFullShow: false          // Oculta o muestra el comics a pantalla completa
+    comicFullShow: false,          // Oculta o muestra el comics a pantalla completa
+    showPopupWindow: false,
+    mensajePopupWindow: ""
 }
 
 
@@ -26,6 +28,9 @@ export default function toolsReducer(state = dataInicial, action){
             return {...state, cardsComics: action.payload.cardsComics}
         case "ACTIVAR_COMIC_FULL_EXITO":
             return  {...state, comicFullShow: action.payload.comicFullShow}
+        case "ACTIVAR_VENTANA_POPUP":
+            return {...state, showPopupWindow: action.payload.showPopupWindow, 
+                mensajePopupWindow: action.payload.mensajePopupWindow}
         default:
             return state
     }

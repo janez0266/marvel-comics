@@ -9,6 +9,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     position: fixed;
     background-color: white;
+    z-index: 4;
 }
 .logo img {
     width: 160px;
@@ -24,6 +25,7 @@
     width: 40px;
     height: 40px;
     margin-top: 20px;
+    cursor: pointer;
 }
 .logo {
     margin-right: 20px;

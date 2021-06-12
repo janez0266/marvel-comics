@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import {cap} from "../utils/Constants"
+import {capitalCase} from "../utils/Constants"
 
  const ShowCreators = (props) => {
     return (
@@ -12,7 +12,7 @@ import {cap} from "../utils/Constants"
             key={idx}  >
             <ul>
                 <li>
-                    {cap(item.role)}:  {item.name}
+                    {capitalCase(item.role)}:  {item.name}
                 </li>
             </ul>
             

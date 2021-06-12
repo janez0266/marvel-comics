@@ -1,6 +1,6 @@
 import axios from "axios";
 import {urlStringKey} from "../APIS/MarvelKey"
-import {loadingWindows} from "../APIS/ToolsActions";
+import {loadingWindows,  showPopupWindow } from "../APIS/ToolsActions";
 
 // constantes
 const addOffset = 8;
@@ -25,6 +25,7 @@ export const getComicsByIdAccion = (id) => async (dispatch) => {
  
   } catch (error) {
     console.log(error);
+    dispatch(showPopupWindow("..Error al descargar los datos del personaje. Intente de nuevo..."));
   }
   dispatch(loadingWindows(false));
 };
@@ -39,13 +40,14 @@ export const getComicsByNameAccion = (title) => async (dispatch) => {
       payload: {
         arrayComics: res.data.data.results,
         length: res.data.data.total,
-        title: title
+        title: title,
+        offset: 0
       },
     });
-    //console.log("arreglo busqueda por comics: ", getState().comics.arrayComics)
+    
   } catch (error) {
     console.log(error);
-    
+    dispatch(showPopupWindow("..Error al descargar los datos del personaje. Intente de nuevo..."));
   }
   dispatch(loadingWindows(false));
 };
@@ -56,12 +58,12 @@ export const siguienteComicsAccion = () => async (dispatch, getState) => {
   const siguiente = offset + addOffset
   const urlCharacter = `${urlBaseComicsName}?titleStartsWith=${title}&limit=8&offset=${siguiente}&orderBy=title&${urlStringKey}`
   const length = getState().comics.length
-  
-  if(siguiente >= length) {console.log("exedido el nro de items a mostrar")
+  console.log("Longitud del arreglo por comics: ", getState().comics.length)
+  console.log("Siguiente: ", siguiente)
+  if(siguiente >= length) {dispatch(showPopupWindow("..No hay mas datos que mostrar..."))
   }else {
       dispatch(loadingWindows(true));
-      try {
-          
+      try {          
           const res = await axios.get(`${urlCharacter}`)
           dispatch({
               type: "SIGUIENTE_COMICS_EXITO",
@@ -73,7 +75,7 @@ export const siguienteComicsAccion = () => async (dispatch, getState) => {
 
       } catch (error) {
           console.log(error)
-             
+          dispatch(showPopupWindow("..Error al descargar los datos del personaje. Intente de nuevo..."));
       }
       dispatch(loadingWindows(false));
   }
@@ -85,11 +87,10 @@ export const anteriorComicsAccion = () => async (dispatch, getState) => {
   const siguiente = offset - addOffset
   const urlCharacter = `${urlBaseComicsName}?titleStartsWith=${title}&limit=8&offset=${siguiente}&orderBy=title&${urlStringKey}`
 
-  if(siguiente < 0) {console.log("exedido el nro de items a mostrar")
+  if(siguiente < 0) {dispatch(showPopupWindow("..No hay mas datos que mostrar..."))
   }else {
       dispatch(loadingWindows(true));
-      try {
-          
+      try {          
           const res = await axios.get(`${urlCharacter}`)
           dispatch({
               type: "ANTERIOR_COMICS_EXITO",
@@ -100,15 +101,14 @@ export const anteriorComicsAccion = () => async (dispatch, getState) => {
           })
       } catch (error) {
           console.log(error)
-         
+          dispatch(showPopupWindow("..Error al descargar los datos del personaje. Intente de nuevo..."));
       }
       dispatch(loadingWindows(false));
   }
-
 }
+
 export const getComicFull = (id, title, description, image, published, creators, urlComic) => async (dispatch) => {
 
-  
   const arrayComicFull = {
       id: id,
       title: title,
