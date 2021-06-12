@@ -39,7 +39,8 @@ export const getCharactersByNameAccion = (personaje) => async (dispatch, getStat
             payload: {
                 array: res.data.data.results,
                 length: res.data.data.total,
-                name: personaje                
+                name: personaje,
+                offset: 0
             }
         })
         

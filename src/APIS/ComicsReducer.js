@@ -15,7 +15,8 @@ export default function comicsReducer(state = dataInicial, action){
         case "OBTENER_COMICS_POR_NOMBRE_EXITO":
             return {...state, arrayComics: action.payload.arrayComics,                 
                 title: action.payload.title,
-                length: action.payload.length
+                length: action.payload.length,
+                offset: action.payload.offset
             }     
           case  "SIGUIENTE_COMICS_EXITO":
             return {...state, arrayComics: action.payload.arrayComics, 

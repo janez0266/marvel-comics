@@ -40,7 +40,8 @@ export const getComicsByNameAccion = (title) => async (dispatch) => {
       payload: {
         arrayComics: res.data.data.results,
         length: res.data.data.total,
-        title: title
+        title: title,
+        offset: 0
       },
     });
     
