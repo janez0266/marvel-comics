@@ -1,28 +1,19 @@
 import React from "react";
-import "./App.css"
-import Nav from "./components/Nav";
-import Galeria from "./components/Galeria"
-import { Provider } from "react-redux";
-import generateStore from "./redux/store"
-
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import { Provider, useSelector } from "react-redux";
+import generateStore from "./redux/store";
+import Layout from "./components/Layout";
 
 const App = () => {
   const store = generateStore();
   return (
-    <Provider store={store}>
-      <div>
-        <header>
-          <Nav />
-        </header>
-        <div className="main">
-          <Galeria />
-        </div>      
-      </div>
-    </Provider>
-
+    <Router>
+      <Provider store={store}>
+       <Layout/>
+      </Provider>
+    </Router>
   );
-}
+};
 
 export default App;
-

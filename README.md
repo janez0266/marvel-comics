@@ -27,6 +27,7 @@
 </li>
 </ul>
 <br>
+
 ## Primer Commit y Push en MASTER
 <ul>
   <li>Plantilla inicial de la barra de navegación y el catálogo de personajes </li>
@@ -37,6 +38,7 @@
   <li>Se pasa el proyecto a una rama "Feature-galeria" para trabajar lo referente a la api y carga inicial de los personajes</li>
 
  </ul>
+
 ## Feature Galeria Random
 <ul>
   <li>Creación de una rama "Feature-galeria-random" para trabajar lo referente a la api y carga inicial de los personajes</li>
@@ -53,6 +55,7 @@
   <li>Se agregaron dos botones "Atras" y "Siguiente" al recibir la lista de personajes por busqueda y poder visualizar el resultado en grupos de 8 cards</li>
   <li>Se agrego un link que dirige a la página del comics al hacer click a un elemento del listado de comics</li>
   <li>Ajustes de estilo</li>
+</ul>
 
 ## Feature Buscador combinado
 <ul>
@@ -82,6 +85,6 @@
   - Crear un archivo en la raiz llamado .env
   - Editarlo y agregar las lineas:
     - // .env
-      REACT_APP_API_PUBLIC_KEY="colocar la key publica sin comillas"
-      REACT_APP_API_PRIVATE_KEY="colocar la key privada sin comillas"
+    - REACT_APP_API_PUBLIC_KEY="colocar la key publica sin comillas"
+    - REACT_APP_API_PRIVATE_KEY="colocar la key privada sin comillas"
 - npm start 

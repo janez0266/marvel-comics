@@ -1,17 +1,20 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import {useDispatch} from "react-redux";
-import {showCardsComics, showButtons} from "../APIS/ToolsActions"
+import {showCardsComics, showButtons} from "../actions/ToolsActions"
 import ShowCreators from "./ShowCreators"
 import {fecha} from "../utils/Constants"
 import "../styles/ComicsFull.css";
+import { useHistory } from "react-router";
 
 const ComicsFull = (props) => {
     const dispatch = useDispatch();
+    const history = useHistory();
   
   return (
     <>
-        <div className="comicItemC" style={{ display: `${props.estado ? "flex" : "none"}`} }>
+    {/* style={{ display: `${props.estado ? "flex" : "none"}`} } */}
+        <div className="comicItemC" >
             <div className="imgComiC">
                 <img src={props.comicFull.image} /> 
             </div>
@@ -20,8 +23,10 @@ const ComicsFull = (props) => {
                     <a  href={props.comicFull.urlComic} target="_blank"
                     rel="noreferrer" >Ver Comic &gt;&gt;</a> 
                     <p className="back" onClick={() => { 
-                        dispatch(showCardsComics()); 
-                        dispatch(showButtons(true))}}>Volver </p>       
+                        // dispatch(showCardsComics()); //colocar aqui la ruta a la vista de los comics
+                        // dispatch(showButtons(true))
+                        history.push(`${props.pathBack}`)
+                        }}>Volver </p>       
                 </div>
                 <h2> {props.comicFull.title}</h2>
                 <div className="infotext">

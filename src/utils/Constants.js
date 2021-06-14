@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { setFavoriteStar } from "../APIS/FavoriteReducer";
+import { setFavoriteStar } from "../reducers/FavoriteReducer";
 import star from "../images/star_favorite.png";
 import yellowStar from "../images/favoritesilver.png"
 import { useSelector } from "react-redux";

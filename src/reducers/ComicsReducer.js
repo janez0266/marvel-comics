@@ -9,22 +9,22 @@ const dataInicial = {
 }
 export default function comicsReducer(state = dataInicial, action){
     switch(action.type){
-        case "OBTENER_COMICS_POR_ID_EXITO":
+        case "GET_COMICS_BY_ID":
             return {...state, array: action.payload.array
             }
-        case "OBTENER_COMICS_POR_NOMBRE_EXITO":
+        case "GET_COMICS_BY_NAME":
             return {...state, arrayComics: action.payload.arrayComics,                 
                 title: action.payload.title,
                 length: action.payload.length,
                 offset: action.payload.offset
             }     
-          case  "SIGUIENTE_COMICS_EXITO":
+          case  "NEXT_COMICS":
             return {...state, arrayComics: action.payload.arrayComics, 
               offset: action.payload.offset}
-          case  "ANTERIOR_COMICS_EXITO": 
+          case  "BACK_COMICS": 
             return {...state, arrayComics: action.payload.arrayComics, 
             offset: action.payload.offset }
-          case "COMICS_FULL_EXITO":
+          case "COMICS_FULL":
             return {...state, arrayComicFull: action.payload.arrayComicFull}
        
         default:
