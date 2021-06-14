@@ -18,14 +18,16 @@ export default function comicsReducer(state = dataInicial, action){
                 length: action.payload.length,
                 offset: action.payload.offset
             }     
-          case  "NEXT_COMICS":
+        case  "NEXT_COMICS":
             return {...state, arrayComics: action.payload.arrayComics, 
-              offset: action.payload.offset}
-          case  "BACK_COMICS": 
+            offset: action.payload.offset}
+        case  "BACK_COMICS": 
             return {...state, arrayComics: action.payload.arrayComics, 
-            offset: action.payload.offset }
-          case "COMICS_FULL":
+                offset: action.payload.offset }
+        case "COMICS_FULL":
             return {...state, arrayComicFull: action.payload.arrayComicFull}
+        case "CLEAR_LIST_COMICS_MODAL":
+            return  {...state, array: action.payload.array}       
        
         default:
             return state

@@ -2,13 +2,10 @@ import React from "react";
 import logo from "../images/logo.png";
 import "../styles/Nav.css";
 import Buscador from "./Buscador";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getFavoritosAccion } from "../actions/CharacterActions";
-import { mostrarEstrella } from "../utils/Constants";
+import { selectFavoriteStarNav } from "../reducers/FavoriteReducer";
 
 const Nav = () => {
-  const dispatch = useDispatch();
   const history = useHistory();
   return (
     <div className="nav">
@@ -23,7 +20,7 @@ const Nav = () => {
       </div>
       <Buscador />
       <div className="star" onClick={() => history.push("/favoritos")}>
-        <img src={mostrarEstrella()} alt=""></img>
+        <img src={selectFavoriteStarNav()} alt=""></img>
       </div>
     </div>
   );

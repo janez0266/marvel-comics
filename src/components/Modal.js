@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import "../styles/Modal.css";
 import { useSelector } from "react-redux";
 import {useDispatch} from "react-redux";
-import {getComicsByIdAccion} from "../actions/ComicsActions"
+import {clearComicsModal, getComicsByIdAccion} from "../actions/ComicsActions"
 import {urlStringKey} from "../APIS/MarvelKey"
 import ModalListComics from "./ModalListComics";
 import { desactivarModal } from "../actions/ToolsActions";
 
 
-const Modal = (props) => {
+const Modal = () => {
   const dispatch = useDispatch();
   const comics = useSelector((store) => store.comics.array);
   const isModalOpen = useSelector((store) => store.tools.isModalOpen)
@@ -23,7 +23,8 @@ const Modal = (props) => {
   }, [selectedCharacter])
   const closeModal = () => {
     // TODO: hacer que limpie los comics al cerrar
-    dispatch(desactivarModal())
+    dispatch(clearComicsModal());
+    dispatch(desactivarModal());
   }
 
   return (

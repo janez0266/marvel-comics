@@ -72,6 +72,20 @@
 <li>Al hacer click a la estrella de la barra de navegación, se muestran todos los favoritos en el mismo formato de las Cards</li>
 </ul>
 
+## Feature Favoritos Comics
+<ul>
+<li>Se aplicó React route para solucionar muchos problemas al manejar tantas vistas</li>
+<li>Se agregaron los Comics al manejo de los favoritos</li>
+<li>Ahora se pueden hacer busquedas directas por el url, quedando de la siguiente manera:</li>
+<ul>
+<li>http://localhost:3000/busqueda/spider   Hace la busqueda en personajes y comics que comiencen por spider, se muestran los Personajes</li>
+<li>http://localhost:3000/busqueda/spider/comics  Se muestran los Comics en el resultado de la busqueda</li>
+<li>http://localhost:3000/favoritos  Se muestran los Personajes de los favoritos</li>
+<li>http://localhost:3000/favoritos/comics  Se muestran los Comics de los favoritos</li>
+
+</ul>
+<li>Se hicieron muchas modificaciones importantes en la lógica para mejorar la funcionalidad</li>
+</ul>
  ## Elaborado por:
  Ing. Julio Añez
 

@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { showNavFavoriteStar } from "../reducers/FavoriteReducer";
+import { initFavoritesLocalStorage, setNavFavoriteStar } from "../reducers/FavoriteReducer";
 import { getCharactersAccion } from "../actions/CharacterActions";
 import CardsCharacter from "../components/CardsCharacter";
 import "../styles/Galeria.css"
 
 const Home = () => {
   const dispatch = useDispatch();
-  const personajes = useSelector((state) => state.personajes.array) || [];
+  const personajes = useSelector((state) => state.personajes.array) || [{}];
   useEffect(() => {
-    dispatch(showNavFavoriteStar());
+    dispatch(initFavoritesLocalStorage());
+    dispatch(setNavFavoriteStar());
 
     dispatch(getCharactersAccion());
+    
   }, []);
   return (
     <div className="contenedor">

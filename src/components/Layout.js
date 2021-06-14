@@ -1,12 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router";
-import { showButtons } from "../actions/ToolsActions";
 import Busqueda from "../pages/Busqueda";
 import Favoritos from "../pages/Favoritos";
 import Home from "../pages/Home";
 import Buttons from "./Buttons";
-import ComicsFull from "./ComicsFull";
 import Modal from "./Modal";
 import Nav from "./Nav";
 import Popup from "./Popup";

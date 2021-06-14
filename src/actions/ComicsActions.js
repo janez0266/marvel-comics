@@ -1,6 +1,6 @@
 import axios from "axios";
 import {urlStringKey} from "../APIS/MarvelKey"
-import {loadingWindows,  showPopupWindow } from "../actions/ToolsActions";
+import {desactivarModal, loadingWindows,  showPopupWindow } from "../actions/ToolsActions";
 
 // constantes
 const addOffset = 8;
@@ -10,7 +10,7 @@ const urlBaseComics = "https://gateway.marvel.com:443/v1/public/characters/";
 
 
 //acciones
-export const getComicsByIdAccion = (id) => async (dispatch) => {
+export const getComicsByIdAccion = (id) => async (dispatch, getState) => {
 
   const urlCharacter = `${urlBaseComics}${id}/comics?orderBy=onsaleDate&${urlStringKey}`;
   dispatch(loadingWindows(true));
@@ -28,6 +28,11 @@ export const getComicsByIdAccion = (id) => async (dispatch) => {
     dispatch(showPopupWindow("..Error al descargar los datos del personaje. Intente de nuevo..."));
   }
   dispatch(loadingWindows(false));
+  const isEmpty = getState().comics.array.length;
+  if(isEmpty === 0) {
+    dispatch(showPopupWindow("..No hay mas datos que mostrar..."));
+    dispatch(desactivarModal());
+  }
 };
 
 export const getComicsByNameAccion = (title) => async (dispatch) => {
@@ -128,3 +133,12 @@ export const getComicFull = (id, title, description, image, published, creators,
 
 
 }
+
+export const clearComicsModal = () => async (dispatch) => {
+    dispatch({
+      type: "CLEAR_LIST_COMICS_MODAL",
+      payload: {
+        array: []
+      },
+    });
+};

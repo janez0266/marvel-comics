@@ -2,22 +2,15 @@ import React, { useEffect } from "react";
 import {
   Route,
   Switch,
-  useHistory,
   useParams,
   useRouteMatch,
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getComicFull, getComicsByNameAccion } from "../actions/ComicsActions";
+import { getComicsByNameAccion } from "../actions/ComicsActions";
 import { getCharactersByNameAccion } from "../actions/CharacterActions";
 import CardsCharacter from "../components/CardsCharacter";
-import CardStarComic from "../components/CardStarComic";
-import { mostrarImagen } from "../APIS/MarvelKey";
-import { verify } from "../utils/Constants";
-import { showComicFull } from "../actions/ToolsActions";
 import ComicsFull from "../components/ComicsFull";
-import { routeComicsFull } from "../utils/Vistas";
 import CardsComics from "../components/CardsComics";
-import Buttons from "../components/Buttons";
 
 const Busqueda = () => {
   const dispatch = useDispatch();
@@ -48,6 +41,7 @@ const Busqueda = () => {
             comics.map((comic) => <CardsComics comic={comic} key={comic.id} />)}
         </Route>
         <Route exact path={`${path}/comics/${comicFullInfo.id}`}>
+          <p>hola</p>
           <ComicsFull comicFull={comicFullInfo} pathBack={`${url}/comics`} />
         </Route>
       </Switch>
