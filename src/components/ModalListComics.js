@@ -1,23 +1,16 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import {verify} from "../utils/Constants"
 
 
 const ModalListComics = (props) => {
-    
-  if (props.comicsItems.length === 0) {
-      return (
-        <div className="modal-list">
-            < h2>... Este personaje no tiene Comics ....</h2>
-        </div>
-        )}
+
   return (
     <>
       <div className="modal-list">
         {props.comicsItems &&
           props.comicsItems.map((item, id) => (
 
-            <a href={verify(item.urls[0].url)} target="_blank" rel="noreferrer" key={id}>
+            <a href={item.urls[0].url} target="_blank" rel="noreferrer" key={id}>
             <div className="modalItem" >
               <div className="imgComic" >
                 <img

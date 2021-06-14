@@ -1,34 +1,26 @@
 import React, { useState } from "react";
-import { getCharactersByNameAccion } from "../APIS/MarvelAPI";
-import { getComicsByNameAccion } from "../APIS/ComicsAPI";
-import { useDispatch } from "react-redux";
+import {useHistory} from 'react-router-dom'
 import loupe from "../images/loupe.svg";
 import "../styles/Buscador.css";
 
 const Buscador = () => {
   const [value, setValue] = useState("");
-  const dispatch = useDispatch();
-
-  // handleChange = handleChange.bind(this);
-  //   handleSubmit = handleSubmit.bind(this);
-
+  const history = useHistory();
   const handleChange = (e) => {
     setValue(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(getCharactersByNameAccion(value));   //Busca por personajes
-    dispatch(getComicsByNameAccion(value));       //Busca por comics
-    
+    history.push(`/busqueda/${value}`)
   };
 
   return (
     <div className="buscar">
       <img src={loupe} alt="" className="form-loupe_icon"></img>
-      <div>
+      <div className="inputArea">
         <form onSubmit={handleSubmit}>
-          <input type="text" value={value} onChange={handleChange} />
+          <input type="text" value={value} placeholder="Buscar" onChange={handleChange} />
         </form>
       </div>
     </div>

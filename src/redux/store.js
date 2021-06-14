@@ -1,9 +1,9 @@
 import {createStore, combineReducers, compose, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
-import marvelReducer from "../APIS/MarvelReducer";
-import comicsReducer from "../APIS/ComicsReducer";
-import toolsReducer from "../APIS/ToolsReducer";
-import favoriteReducer from "../APIS/FavoriteReducer";
+import marvelReducer from "../reducers/CharacterReducer";
+import comicsReducer from "../reducers/ComicsReducer";
+import toolsReducer from "../reducers/ToolsReducer";
+import favoriteReducer from "../reducers/FavoriteReducer";
 
 const rootReducer = combineReducers({
     personajes: marvelReducer,

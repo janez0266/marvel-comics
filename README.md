@@ -27,6 +27,7 @@
 </li>
 </ul>
 <br>
+
 ## Primer Commit y Push en MASTER
 <ul>
   <li>Plantilla inicial de la barra de navegación y el catálogo de personajes </li>
@@ -37,6 +38,7 @@
   <li>Se pasa el proyecto a una rama "Feature-galeria" para trabajar lo referente a la api y carga inicial de los personajes</li>
 
  </ul>
+
 ## Feature Galeria Random
 <ul>
   <li>Creación de una rama "Feature-galeria-random" para trabajar lo referente a la api y carga inicial de los personajes</li>
@@ -53,6 +55,7 @@
   <li>Se agregaron dos botones "Atras" y "Siguiente" al recibir la lista de personajes por busqueda y poder visualizar el resultado en grupos de 8 cards</li>
   <li>Se agrego un link que dirige a la página del comics al hacer click a un elemento del listado de comics</li>
   <li>Ajustes de estilo</li>
+</ul>
 
 ## Feature Buscador combinado
 <ul>
@@ -69,6 +72,20 @@
 <li>Al hacer click a la estrella de la barra de navegación, se muestran todos los favoritos en el mismo formato de las Cards</li>
 </ul>
 
+## Feature Favoritos Comics
+<ul>
+<li>Se aplicó React route para solucionar muchos problemas al manejar tantas vistas</li>
+<li>Se agregaron los Comics al manejo de los favoritos</li>
+<li>Ahora se pueden hacer busquedas directas por el url, quedando de la siguiente manera:</li>
+<ul>
+<li>http://localhost:3000/busqueda/spider   Hace la busqueda en personajes y comics que comiencen por spider, se muestran los Personajes</li>
+<li>http://localhost:3000/busqueda/spider/comics  Se muestran los Comics en el resultado de la busqueda</li>
+<li>http://localhost:3000/favoritos  Se muestran los Personajes de los favoritos</li>
+<li>http://localhost:3000/favoritos/comics  Se muestran los Comics de los favoritos</li>
+
+</ul>
+<li>Se hicieron muchas modificaciones importantes en la lógica para mejorar la funcionalidad</li>
+</ul>
  ## Elaborado por:
  Ing. Julio Añez
 
@@ -82,6 +99,6 @@
   - Crear un archivo en la raiz llamado .env
   - Editarlo y agregar las lineas:
     - // .env
-      REACT_APP_API_PUBLIC_KEY="colocar la key publica sin comillas"
-      REACT_APP_API_PRIVATE_KEY="colocar la key privada sin comillas"
+    - REACT_APP_API_PUBLIC_KEY="colocar la key publica sin comillas"
+    - REACT_APP_API_PRIVATE_KEY="colocar la key privada sin comillas"
 - npm start 

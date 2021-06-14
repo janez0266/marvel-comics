@@ -1,6 +1,6 @@
 import axios from "axios";
 import {urlStringKey} from "../APIS/MarvelKey"
-import {loadingWindows,  showPopupWindow } from "../APIS/ToolsActions";
+import {desactivarModal, loadingWindows,  showPopupWindow } from "../actions/ToolsActions";
 
 // constantes
 const addOffset = 8;
@@ -10,14 +10,14 @@ const urlBaseComics = "https://gateway.marvel.com:443/v1/public/characters/";
 
 
 //acciones
-export const getComicsByIdAccion = (id) => async (dispatch) => {
+export const getComicsByIdAccion = (id) => async (dispatch, getState) => {
 
   const urlCharacter = `${urlBaseComics}${id}/comics?orderBy=onsaleDate&${urlStringKey}`;
   dispatch(loadingWindows(true));
   try {
     const res = await axios.get(`${urlCharacter}`);
     dispatch({
-      type: "OBTENER_COMICS_POR_ID_EXITO",
+      type: "GET_COMICS_BY_ID",
       payload: {
         array: res.data.data.results
       },
@@ -28,6 +28,11 @@ export const getComicsByIdAccion = (id) => async (dispatch) => {
     dispatch(showPopupWindow("..Error al descargar los datos del personaje. Intente de nuevo..."));
   }
   dispatch(loadingWindows(false));
+  const isEmpty = getState().comics.array.length;
+  if(isEmpty === 0) {
+    dispatch(showPopupWindow("..No hay mas datos que mostrar..."));
+    dispatch(desactivarModal());
+  }
 };
 
 export const getComicsByNameAccion = (title) => async (dispatch) => {
@@ -36,7 +41,7 @@ export const getComicsByNameAccion = (title) => async (dispatch) => {
   try {
     const res = await axios.get(`${urlCharacterComics}`);
     dispatch({
-      type: "OBTENER_COMICS_POR_NOMBRE_EXITO",
+      type: "GET_COMICS_BY_NAME",
       payload: {
         arrayComics: res.data.data.results,
         length: res.data.data.total,
@@ -66,7 +71,7 @@ export const siguienteComicsAccion = () => async (dispatch, getState) => {
       try {          
           const res = await axios.get(`${urlCharacter}`)
           dispatch({
-              type: "SIGUIENTE_COMICS_EXITO",
+              type: "NEXT_COMICS",
               payload: {
                   arrayComics: res.data.data.results,
                   offset: siguiente
@@ -93,7 +98,7 @@ export const anteriorComicsAccion = () => async (dispatch, getState) => {
       try {          
           const res = await axios.get(`${urlCharacter}`)
           dispatch({
-              type: "ANTERIOR_COMICS_EXITO",
+              type: "BACK_COMICS",
               payload: {
                   arrayComics: res.data.data.results,
                   offset: siguiente                    
@@ -120,7 +125,7 @@ export const getComicFull = (id, title, description, image, published, creators,
       urlComic: urlComic
   }
   dispatch({
-      type: "COMICS_FULL_EXITO",
+      type: "COMICS_FULL",
       payload: {
           arrayComicFull: arrayComicFull                                    
       }
@@ -128,3 +133,12 @@ export const getComicFull = (id, title, description, image, published, creators,
 
 
 }
+
+export const clearComicsModal = () => async (dispatch) => {
+    dispatch({
+      type: "CLEAR_LIST_COMICS_MODAL",
+      payload: {
+        array: []
+      },
+    });
+};
