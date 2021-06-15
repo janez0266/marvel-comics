@@ -19,7 +19,9 @@ const Home = () => {
     <div className="contenedor">
       {personajes.length > 0 &&
         personajes.map((personaje) => (
-          <CardsCharacter personaje={personaje} key={personaje.id} />
+          <CardsCharacter 
+            personaje={personaje} 
+            key={personaje.id} />
         ))}
     </div>
   );

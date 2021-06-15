@@ -8,14 +8,17 @@ import { useHistory } from "react-router";
 const CardsComics = ({ comic }) => {
   const history = useHistory();
   return (
-    <div className="cardsC" key={comic.id} style={{ display: "flex" }}>
+    <div className="cardsC" 
+      key={comic.id} 
+      style={{ display: "flex" }}>
       <div
         className="cardImageC"
         onClick={() => {
           history.push(`/comics/${comic.id}`);}}
       >
         <img
-          src={mostrarImagen(comic.thumbnail.path + "." + comic.thumbnail.extension)}
+          src={mostrarImagen(comic.thumbnail.path +
+             "." + comic.thumbnail.extension)}
         />
       </div>
       <CardStarComic itemComicValues={comic} />

@@ -30,13 +30,18 @@ const Busqueda = () => {
         <Route exact path={path}>
           {personajes.length > 0 &&
             personajes.map((personaje) => (
-              <CardsCharacter personaje={personaje} key={personaje.id} />
+              <CardsCharacter 
+                personaje={personaje} 
+                key={personaje.id} />
             ))}
         </Route>
         {/* Ruta de resultador de comics */}
         <Route exact path={`${path}/comics`}>
           {comics.length > 0 &&
-            comics.map((comic) => <CardsComics comic={comic} key={comic.id} />)}
+            comics.map((comic) => 
+              <CardsComics 
+                comic={comic} 
+                key={comic.id} />)}
         </Route>
       </Switch>
     </div>

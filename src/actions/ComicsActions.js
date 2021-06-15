@@ -63,8 +63,6 @@ export const siguienteComicsAccion = () => async (dispatch, getState) => {
   const siguiente = offset + addOffset
   const urlCharacter = `${urlBaseComicsName}?titleStartsWith=${title}&limit=8&offset=${siguiente}&orderBy=title&${urlStringKey}`
   const length = getState().comics.length
-  console.log("Longitud del arreglo por comics: ", getState().comics.length)
-  console.log("Siguiente: ", siguiente)
   if(siguiente >= length) {dispatch(showPopupWindow("..No hay mas datos que mostrar..."))
   }else {
       dispatch(loadingWindows(true));

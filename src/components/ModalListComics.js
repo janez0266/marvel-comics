@@ -12,8 +12,9 @@ const ModalListComics = (props) => {
       <div className="modal-list">
         {props.comicsItems &&
           props.comicsItems.map((item, id) => (
-            // <a href={item.urls[0].url} target="_blank" rel="noreferrer" key={id}>
-            <div className="modalItem" key={id} onClick={() => {
+            <div className="modalItem" 
+              key={id} 
+              onClick={() => {
                   history.push(`/comics/${item.id}`);       
                  }}>
               <div className="imgComic" >

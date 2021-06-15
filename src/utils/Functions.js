@@ -10,7 +10,11 @@ export const fecha = (fecha) => {
         const arreglo = fecha.split("T");
          const date = arreglo[0].split("-")
          if(date[0]==="") date.shift()       
-        let newDate = moment([parseInt(date[0]), parseInt(date[1]), parseInt(date[2])]).format('MMMM Do, YYYY');
+        let newDate = moment([
+            parseInt(date[0]), 
+            parseInt(date[1]), 
+            parseInt(date[2])]).
+            format('MMMM Do, YYYY');
         if(newDate === "Invalid date") 
             return arreglo[0]
          else 

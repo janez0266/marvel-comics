@@ -51,7 +51,7 @@ export const getCharactersByNameAccion =
       if (exist === 0)
         dispatch(
           showPopupWindow(
-            "...No hay personajes que mostrar. Intente de nuevo..."
+            "...No hay personajes que mostrar. Revise la pestaña de Comics..."
           )
         );
       //else dispatch(showButtons(true));
@@ -132,15 +132,12 @@ export const anteriorCharacterAccion = () => async (dispatch, getState) => {
 export const getFavoritosAccion = () => async (dispatch) => {
   const arrayFavoritos =
     JSON.parse(localStorage.getItem("favPersonajes")) || [];
-  //const arrayFavoritos = getState().favorite.arrayFav;
-  console.log(arrayFavoritos);
   dispatch({
     type: "GET_FAVORITES_CHARACTERS",
     payload: {
       array: arrayFavoritos,
     },
   });
-  //dispatch(showButtons(true));
 };
 
 export const buscarComics = (personaje) => async (dispatch) => {
