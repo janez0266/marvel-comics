@@ -6,7 +6,7 @@ const Popup = (props) => {
     return (
         
 
-        <div className="popup"  style={{ height: `${props.estado ? "200px" : "0"}`} }>
+        <div className="popup"  style={{ display: `${props.estado ? "flex" : "none"}`} }>
            <div className="contenidoPopup">
                 <div className= "popupImage">
                     <img src={alerta} />

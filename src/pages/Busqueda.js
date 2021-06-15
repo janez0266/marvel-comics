@@ -9,16 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getComicsByNameAccion } from "../actions/ComicsActions";
 import { getCharactersByNameAccion } from "../actions/CharacterActions";
 import CardsCharacter from "../components/CardsCharacter";
-import ComicsFull from "../components/ComicsFull";
 import CardsComics from "../components/CardsComics";
 
 const Busqueda = () => {
   const dispatch = useDispatch();
   const { input } = useParams();
-  let { path, url } = useRouteMatch();
+  let { path } = useRouteMatch();
   const personajes = useSelector((store) => store.personajes?.array) || [];
   const comics = useSelector((store) => store.comics.arrayComics);
-  const comicFullInfo = useSelector((store) => store.comics.arrayComicFull);
 
   useEffect(() => {
     dispatch(getCharactersByNameAccion(input)); //Busca por personajes
@@ -39,10 +37,6 @@ const Busqueda = () => {
         <Route exact path={`${path}/comics`}>
           {comics.length > 0 &&
             comics.map((comic) => <CardsComics comic={comic} key={comic.id} />)}
-        </Route>
-        <Route exact path={`${path}/comics/${comicFullInfo.id}`}>
-          <p>hola</p>
-          <ComicsFull comicFull={comicFullInfo} pathBack={`${url}/comics`} />
         </Route>
       </Switch>
     </div>

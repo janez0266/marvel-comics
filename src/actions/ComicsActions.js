@@ -6,7 +6,7 @@ import {desactivarModal, loadingWindows,  showPopupWindow } from "../actions/Too
 const addOffset = 8;
 const urlBaseComicsName = "https://gateway.marvel.com:443/v1/public/comics";
 const urlBaseComics = "https://gateway.marvel.com:443/v1/public/characters/";
-
+const urlBaseComicsFull = "https://gateway.marvel.com:443/v1/public/comics/";
 
 
 //acciones
@@ -112,26 +112,24 @@ export const anteriorComicsAccion = () => async (dispatch, getState) => {
   }
 }
 
-export const getComicFull = (id, title, description, image, published, creators, urlComic) => async (dispatch) => {
 
-  const arrayComicFull = {
-      id: id,
-      title: title,
-      description: description,
-      image:image,
-      published: published,
-      creators: creators,
-      
-      urlComic: urlComic
-  }
-  dispatch({
-      type: "COMICS_FULL",
+export const getComicFullById = (comicId) => async(dispatch)=>{
+
+  const urlCharacter = `${urlBaseComicsFull}${comicId}?${urlStringKey}`;
+  dispatch(loadingWindows(true));
+  try {
+    const res = await axios.get(`${urlCharacter}`);
+    dispatch({
+      type: "GET_COMICS_FULL_BY_ID",
       payload: {
-          arrayComicFull: arrayComicFull                                    
-      }
-  })
-
-
+        arrayComicFull: res.data.data.results[0]
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch(showPopupWindow("..Error al descargar los datos del personaje. Intente de nuevo..."));
+  }
+  dispatch(loadingWindows(false));
 }
 
 export const clearComicsModal = () => async (dispatch) => {

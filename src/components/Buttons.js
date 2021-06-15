@@ -18,6 +18,11 @@ const Buttons = () => {
     useRouteMatch("/busqueda/:input/comics") ||
     useRouteMatch("/favoritos/comics");
   const isInRoot = useRouteMatch({ path: "/", exact: true });
+
+  const isInCharacter = useRouteMatch({path: "/busqueda/:input", exact: true}) || 
+    useRouteMatch({path: "/favoritos", exact: true})
+  const isInComics = useRouteMatch("/busqueda/:input/comics") ||
+    useRouteMatch("/favoritos/comics");
   if(isInRoot) return null
   return (
     
@@ -38,10 +43,11 @@ const Buttons = () => {
 
       
       <div className="showCharactersComicsButtons">
-        <p className="personajes" onClick={() => history.push(isInFavoritePage ? "/favoritos" : `/busqueda/${input}`)}>
+        <p className="personajes" style={ isInCharacter ? {background: "red",} : {background: "white",} }
+        onClick={() => history.push(isInFavoritePage ? "/favoritos" : `/busqueda/${input}`)}>
           Personajes
         </p>
-        <p className="comics" 
+        <p className="comics" style={ isInComics ? {background: "red",} : {background: "white",} }
           onClick={() => history.push(isInFavoritePage ? "/favoritos/comics" : `/busqueda/${input}/comics`)}>
           Comics
         </p>

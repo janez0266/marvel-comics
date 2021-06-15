@@ -20,6 +20,7 @@
   }
 .imgComiC img {
     width: auto;
+    max-width: 45%;
   }
   .infoComiC {
     width: 75%;

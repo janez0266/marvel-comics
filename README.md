@@ -86,6 +86,14 @@
 </ul>
 <li>Se hicieron muchas modificaciones importantes en la lógica para mejorar la funcionalidad</li>
 </ul>
+
+## Feature Ajustes y limpieza
+<ul>
+<li>Ajustes en la vista del Comics a pantalla completa y habilitación de una ruta para buscar el comic por url. Ejemplo: http://localhost:3000/comics/55076</li>
+<li>Se habilitó la opción de seleccionar los comics que se desean visualizar a pantalla completa en la ventana Modal de la lista de comics por personaje. Si se seleccionan varios comics, al cerrar el modal se pueden visualizar uno a uno</li>
+<li>Agregado el color rojo al boto de personajeso comic al hacer la selección</li>
+<li>Se uso momentum() para corregir el formato de la fecha de publicación del comic en los datos mostrados</li>
+</ul>
  ## Elaborado por:
  Ing. Julio Añez
 

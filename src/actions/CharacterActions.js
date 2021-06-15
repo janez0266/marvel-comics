@@ -3,8 +3,6 @@ import { urlStringKey } from "../APIS/MarvelKey";
 import {
   activarModal,
   loadingWindows,
-  showButtons,
-  showCardsCharacters,
   showPopupWindow,
 } from "./ToolsActions";
 
@@ -48,7 +46,7 @@ export const getCharactersByNameAccion =
           offset: 0,
         },
       });
-      dispatch(showCardsCharacters());
+      //dispatch(showCardsCharacters());
       const exist = getState().personajes.length;
       if (exist === 0)
         dispatch(
@@ -56,7 +54,7 @@ export const getCharactersByNameAccion =
             "...No hay personajes que mostrar. Intente de nuevo..."
           )
         );
-      else dispatch(showButtons(true));
+      //else dispatch(showButtons(true));
     } catch (error) {
       console.log(error);
       dispatch(
@@ -142,7 +140,7 @@ export const getFavoritosAccion = () => async (dispatch) => {
       array: arrayFavoritos,
     },
   });
-  dispatch(showButtons(true));
+  //dispatch(showButtons(true));
 };
 
 export const buscarComics = (personaje) => async (dispatch) => {

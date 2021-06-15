@@ -1,4 +1,4 @@
-
+import moment from "moment"
 
 export const capitalCase = (s) => {
     if (typeof s !== 'string') return ''
@@ -8,7 +8,13 @@ export const capitalCase = (s) => {
 export const fecha = (fecha) => {
     if(fecha){
         const arreglo = fecha.split("T");
-    return arreglo[0];
+         const date = arreglo[0].split("-")
+         if(date[0]==="") date.shift()       
+        let newDate = moment([parseInt(date[0]), parseInt(date[1]), parseInt(date[2])]).format('MMMM Do, YYYY');
+        if(newDate === "Invalid date") 
+            return arreglo[0]
+         else 
+            return newDate 
     }
    
 }

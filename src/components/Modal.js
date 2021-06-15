@@ -22,7 +22,6 @@ const Modal = () => {
     }
   }, [selectedCharacter])
   const closeModal = () => {
-    // TODO: hacer que limpie los comics al cerrar
     dispatch(clearComicsModal());
     dispatch(desactivarModal());
   }
