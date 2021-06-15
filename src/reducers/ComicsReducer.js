@@ -2,7 +2,7 @@
 const dataInicial = {
     array: [],    
     arrayComics: [],  
-    arrayComicFull: [],
+    arrayComicFull: {},
     offset: 0,  
     title: "",
     length: 0
@@ -24,7 +24,7 @@ export default function comicsReducer(state = dataInicial, action){
         case  "BACK_COMICS": 
             return {...state, arrayComics: action.payload.arrayComics, 
                 offset: action.payload.offset }
-        case "COMICS_FULL":
+        case "GET_COMICS_FULL_BY_ID":
             return {...state, arrayComicFull: action.payload.arrayComicFull}
         case "CLEAR_LIST_COMICS_MODAL":
             return  {...state, array: action.payload.array}       

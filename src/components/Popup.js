@@ -1,12 +1,12 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import "../styles/Popup.css"
 import alerta from "../images/alerta.png"
 
 const Popup = (props) => {
     return (
-        
-
-        <div className="popup"  style={{ height: `${props.estado ? "200px" : "0"}`} }>
+        <div className="popup"  
+            style={{ display: `${props.estado ? "flex" : "none"}`} }>
            <div className="contenidoPopup">
                 <div className= "popupImage">
                     <img src={alerta} />
@@ -16,8 +16,11 @@ const Popup = (props) => {
                 </div>
             </div>
         </div>
-        
     )
 }
-
+Popup.propTypes = {
+    estado: PropTypes.bool,
+    mensaje: PropTypes.string
+    
+  };
 export default Popup

@@ -61,6 +61,7 @@
 <ul>
   <li>Se habilitó el acceso a cada cómic al hacer click sobre él y redirigir en una nueva ventana al recurso de la página de Marvel</li>
   <li>se habilitó el buscador para buscar coincidencias tanto en personajes como en cómics. El resultado de la búsqueda se muestra simultáneamente en dos pantallas en formato de Cards, activadas una a la vez mediante un selector</li>
+  <li>Se pueden realizar busquedas tales como (The Amazing Spider-Man #22)</li>
   <li>Se colocaron dos botones de navegación para cada galería: la de personajes y la de cómics. Ellos se activan y desactivan dependiendo de la selección que se haga</li>
   <li>Al hacer click al Card de un Comics, este se muestra en detalle en pantalla completa, incluyendo un link a la página web del comic</li>
 </ul>
@@ -78,14 +79,36 @@
 <li>Se agregaron los Comics al manejo de los favoritos</li>
 <li>Ahora se pueden hacer busquedas directas por el url, quedando de la siguiente manera:</li>
 <ul>
-<li>http://localhost:3000/busqueda/spider   Hace la busqueda en personajes y comics que comiencen por spider, se muestran los Personajes</li>
-<li>http://localhost:3000/busqueda/spider/comics  Se muestran los Comics en el resultado de la busqueda</li>
-<li>http://localhost:3000/favoritos  Se muestran los Personajes de los favoritos</li>
+<li>http://localhost:3000/busqueda/spider   Hace la busqueda en personajes y comics que comiencen por spider, se muestra la lista de los Personajes</li>
+<li>http://localhost:3000/busqueda/spider/comics  Se muestra la lista de los Comics en el resultado de la busqueda</li>
+<li>http://localhost:3000/favoritos   Se muestran los Personajes de los favoritos</li>
 <li>http://localhost:3000/favoritos/comics  Se muestran los Comics de los favoritos</li>
-
 </ul>
 <li>Se hicieron muchas modificaciones importantes en la lógica para mejorar la funcionalidad</li>
 </ul>
+
+## Feature Ajustes y limpieza
+<ul>
+<li>Ajustes en la vista del Comics a pantalla completa y habilitación de una ruta para buscar el comic por url. Ejemplo: http://localhost:3000/comics/55076</li>
+<li>Se habilitó la opción de seleccionar los comics que se desean visualizar a pantalla completa en la ventana Modal de la lista de comics por personaje. Si se seleccionan varios comics, al cerrar el modal se pueden visualizar uno a uno</li>
+<li>Agregado el color rojo al boto de personajeso comic al hacer la selección</li>
+<li>Se utilizó momentum() para corregir el formato de la fecha de publicación del comic en los datos mostrados</li>
+<li>Se utilizaron varios ToolTips de @material-ui/core</li>
+<li>Ajustes generales responsivos</li>
+</ul>
+
+## Finalización del proyecto
+Solo faltó usar Styled Components
+se utilizó:
+- Hooks-React
+- Componentes funcionales
+- React Router
+- Redux
+- moment para manejo de fechas
+- @material-ui/core/Tooltip
+- Linter + Formatter
+- Props-Types
+- 
  ## Elaborado por:
  Ing. Julio Añez
 
@@ -96,8 +119,8 @@
 - Crear una variable de entorno para colocar las Keys
   - Entrar a la página https://developer.marvel.com/ y crear una cuenta
   - Solicitar las Keys
-  - Crear un archivo en la raiz llamado .env
-  - Editarlo y agregar las lineas:
+  - Crear un archivo en la raiz del proyecto llamado .env
+  - Editarlo y agregar las siguientes lineas:
     - // .env
     - REACT_APP_API_PUBLIC_KEY="colocar la key publica sin comillas"
     - REACT_APP_API_PRIVATE_KEY="colocar la key privada sin comillas"

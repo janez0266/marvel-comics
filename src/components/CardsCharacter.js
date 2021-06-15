@@ -13,13 +13,9 @@ const CardsCharacter = ({ personaje }) => {
         <div
           className="cardImage"
           onClick={() => {
-            dispatch(buscarComics(personaje));
-          }}
-        >
-          <img
-            src={mostrarImagen( personaje.thumbnail.path + "." + personaje.thumbnail.extension
-            )}
-          />
+            dispatch(buscarComics(personaje));}} >
+            <img src={mostrarImagen( personaje.thumbnail.path + 
+              "." + personaje.thumbnail.extension)}/>
         </div>
         <CardStarCharacter itemValues={personaje} />
         <div className="name">

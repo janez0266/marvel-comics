@@ -23,12 +23,17 @@ const Favoritos = () => {
         <Route exact path={path}>
           {characters.length > 0 &&
             characters.map((character) => (
-              <CardsCharacter personaje={character} key={character.id} />
+              <CardsCharacter 
+                personaje={character} 
+                key={character.id} />
             ))}
         </Route>
         <Route exact path={`${path}/comics`}>
           {comics.length > 0 &&
-            comics.map((comic) => <CardsComics comic={comic} key={comic.id} />)}
+            comics.map((comic) => 
+            <CardsComics 
+              comic={comic} 
+              key={comic.id} />)}
         </Route>
       </Switch>
     </div>

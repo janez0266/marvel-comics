@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import PropTypes from 'prop-types';
 import "../styles/Modal.css";
 import { useSelector } from "react-redux";
 import {useDispatch} from "react-redux";
@@ -7,7 +6,7 @@ import {clearComicsModal, getComicsByIdAccion} from "../actions/ComicsActions"
 import {urlStringKey} from "../APIS/MarvelKey"
 import ModalListComics from "./ModalListComics";
 import { desactivarModal } from "../actions/ToolsActions";
-
+import Tooltip from '@material-ui/core/Tooltip';
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -22,7 +21,6 @@ const Modal = () => {
     }
   }, [selectedCharacter])
   const closeModal = () => {
-    // TODO: hacer que limpie los comics al cerrar
     dispatch(clearComicsModal());
     dispatch(desactivarModal());
   }
@@ -36,25 +34,25 @@ const Modal = () => {
         pointerEvents: isModalOpen ? "auto" : "none",
       }}>
       <div className="modal-contenido">
-        <div className="modal-encabezado">
-          <a onClick={closeModal}>
-            <h1>X</h1>
-          </a>
-          <h2> {selectedCharacter.name}</h2>
-        </div>
-        <ModalListComics comicsItems={comics} urlKey={urlStringKey} />
+        <Tooltip 
+          title="Puede seleccionar varios Comics y verlos luego al cerrar la ventana" 
+          arrow 
+          leaveDelay={400}>
+          <div className="modal-encabezado">
+            <a onClick={closeModal}>
+              <h1>X</h1>
+            </a>
+            <h2> {selectedCharacter.name}</h2>
+          </div>
+        </Tooltip>
+
+        <ModalListComics 
+          comicsItems={comics} 
+          urlKey={urlStringKey} />
       </div>
     </div>
   );
 };
 
-Modal.propTypes = {
-  handleClick: PropTypes.func,
-  isModalOpen: PropTypes.bool,
-  name: PropTypes.string,
-  id: PropTypes.number,
-
-  
-}
 
 export default Modal;

@@ -20,6 +20,7 @@
   }
 .imgComiC img {
     width: auto;
+    max-width: 45%;
   }
   .infoComiC {
     width: 75%;
@@ -60,7 +61,7 @@
     font-weight: 600;
   }
   .infotext p {
-    padding: 2px;
+    padding: 4px;
   }
   .descripcionC {
     padding: 38px 0;
@@ -77,4 +78,41 @@
     text-align: center;
     margin-top: 45px;
     cursor: pointer;
+  }
+  @media (max-width: 800px){
+    .comicItemC {
+      height: 614px;
+    }
+    .infoComiC {
+      font-size: 13px;
+    }
+    .infoComiC h2 {
+      font-size: 20px;
+
+  }
+  .infotext p {
+    padding: 2px;
+    font-size: 13px;  
+  }
+  .creators {
+    font-size: 13px;
+  }
+  .descripcionC {
+    padding: 33px 0;
+    line-height: 19px;
+    font-size: 15px;
+}
+.imgComiC img {
+  height: 300px;
+}
+  }
+
+  @media (max-width: 600px){
+
+  .infoComiC {
+    width: 61%;
+    margin: 18px 18px;
+    overflow: auto;
+    font-size: 13px;
+}
   }

@@ -1,17 +1,22 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { useHistory } from "react-router";
 
 
 const ModalListComics = (props) => {
+
+  const history = useHistory();
 
   return (
     <>
       <div className="modal-list">
         {props.comicsItems &&
           props.comicsItems.map((item, id) => (
-
-            <a href={item.urls[0].url} target="_blank" rel="noreferrer" key={id}>
-            <div className="modalItem" >
+            <div className="modalItem" 
+              key={id} 
+              onClick={() => {
+                  history.push(`/comics/${item.id}`);       
+                 }}>
               <div className="imgComic" >
                 <img
                   src={
@@ -28,7 +33,7 @@ const ModalListComics = (props) => {
                 <p>{item.description} </p>
               </div>
             </div>
-            </a>
+            // </a>
 
 
           ))}

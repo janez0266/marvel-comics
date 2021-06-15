@@ -5,21 +5,7 @@ import { useSelector } from "react-redux";
 // constantes
 const dataInicial = {
   arrayFavCharacter: [],
-  favoriteStarNav: localStorage.getItem("favPersonajes") ? true : false, //TODO VERIFICAR TAMBIEN COMICS
-
-  //localStorage.getItem("favPersonajes") ? true : false   
-  //devuelve false solo si no existe , 
-  //true si hay un elemento asi este vacio
-
-  //localStorage.getItem("favPersonajes")===[] ? true : false,
-  //devuelve false si existe un elemento vacio o con datos, o si no hay elementos
-
-  //localStorage.getItem("favPersonajes")===0 ? true : false,
-  // devuelve falso si existe un elemento lleno o vacio, o no existe
-
-
-
-
+  favoriteStarNav: false, 
   arrayFavComics: [],
 };
 
@@ -38,12 +24,13 @@ export default function favoriteReducer(state = dataInicial, action) {
   }
 }
 
-export const initFavoritesLocalStorage = () => async (dispatch) => {
+//Inicializa el localStorage si no existe
+export const initFavoritesLocalStorage = () => async () => {
   if(!localStorage.getItem("favPersonajes")) localStorage.setItem("favPersonajes",[ JSON.stringify([])]);
   if(!localStorage.getItem("favComics")) localStorage.setItem("favComics",[ JSON.stringify([])]);
 };
 
-
+//Setea en el store en true o false para posterior identificacion
 export const setFavoriteStar = (data) => async (dispatch) => {
   dispatch({
     type: "SET_FAVORITE_STAR_NAV",
@@ -53,6 +40,7 @@ export const setFavoriteStar = (data) => async (dispatch) => {
   });
 };
 
+//lee los personajes del localStorage y los pasa al store
 export const getFavoriteCharacters = () => async (dispatch) => {
   const characters = JSON.parse(localStorage.getItem("favPersonajes")) || [];
   dispatch({
@@ -63,6 +51,7 @@ export const getFavoriteCharacters = () => async (dispatch) => {
   });
 };
 
+//lee los comic del localStorage y los pasa al store
 export const getFavoriteComics = () => async (dispatch) => {
   const comics = JSON.parse(localStorage.getItem("favComics")) || [];
   dispatch({
@@ -73,6 +62,7 @@ export const getFavoriteComics = () => async (dispatch) => {
   });
 };
 
+//Agrega los personajes seleccionados al arreglo de favoritos
 export const addCharToFavorite =
   (nameIn, idIn, imgPath, imgExtension) => async (dispatch) => {
     const objetoFav = JSON.parse(localStorage.getItem("favPersonajes")) || [];
@@ -107,11 +97,10 @@ export const addCharToFavorite =
     localStorage.setItem("favPersonajes", JSON.stringify(objetoFav));
     if (objetoFav === []) localStorage.removeItem("favPersonajes");
     dispatch(setNavFavoriteStar());
-    console.log("estoy en addComicToFavorite")
   };
 
 
-
+//Agrega los comics seleccionados al arreglo de favoritos
 export const addComicToFavorite = (comicValues) => async (dispatch) => {
   const arrayFavComics = JSON.parse(localStorage.getItem("favComics")) || [];
 
@@ -121,12 +110,9 @@ export const addComicToFavorite = (comicValues) => async (dispatch) => {
   }else{
     arrayFavComics.push(comicValues);
   }
-
  await localStorage.setItem("favComics", JSON.stringify(arrayFavComics));
   dispatch(getFavoriteComics()) 
   dispatch(setNavFavoriteStar())
-  console.log("estoy en addComicToFavorite")
-  //dispatch(setFavoriteStar(true));
 };
 
 

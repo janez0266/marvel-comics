@@ -16,16 +16,24 @@
 }
 input[type=text] {
     width: 85%;
-    padding: 23px;
+    padding: 19px;
     border: none;
     background-color: rgb(239 237 237);
+    font-size: 22px;
     
 }
-
+@media (max-width: 800px){
+    input[type=text] {
+        
+        font-size: 17px;
+        
+    }
+}
 @media (max-width: 700px){
     input[type=text] {
-        padding: 17px;
+        padding: 14px 7px;
         width: 100%;
+        font-size: 14px;
     }
     .buscar {
         padding-left: 7px;

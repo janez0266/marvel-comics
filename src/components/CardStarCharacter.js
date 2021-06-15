@@ -5,6 +5,7 @@ import starWhite from "../images/star_favorite_white.png";
 import starGold from "../images/favoritesilver.png";
 import { useDispatch } from "react-redux";
 import { addCharToFavorite } from "../reducers/FavoriteReducer";
+import Tooltip from '@material-ui/core/Tooltip';
 
 const starCard = (idIn) => {
   const objetoFav = useSelector((store) => store.favorite.arrayFavCharacter);
@@ -31,7 +32,11 @@ const CardStarCharacter = ({ itemValues }) => {
           )
         }
       >
-        <img src={starCard(itemValues.id)} />
+        <Tooltip title="Agregar o quitar de los Favoritos" 
+        arrow 
+        leaveDelay={400}>
+            <img src={starCard(itemValues.id)} />
+        </Tooltip>
       </div>
     </>
   );

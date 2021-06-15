@@ -3,17 +3,18 @@
     height: 30px;
     position: fixed;
     top: 80px;
+    margin-left: 6%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     z-index: 4;
-   
+    font-family: system-ui;
 }
 
 .scrollButtons {
     padding: 7px;
     cursor: pointer;
-    background-color: rgb(210 239 208);
+    background-color: white;
     display: flex;
     flex-direction: row;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
@@ -25,7 +26,7 @@
 .scrollButtons-comics {
     padding: 7px;
     cursor: pointer;
-    background-color: rgb(253 249 200);
+    background-color: white;
     display: flex;
     flex-direction: row;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
@@ -47,14 +48,19 @@
     padding: 0 20px;
 }
 .personajes {
-    background-color: rgb(210 239 208);
+    background-color: white;
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 .comics {
-    background-color: rgb(253 249 200);
+    background-color: white;
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+@media (max-width: 700px){
+    .buttons {
+        top: 60px;
+    }
 }
